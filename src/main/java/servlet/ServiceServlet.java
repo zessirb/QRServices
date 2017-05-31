@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet d'interactions avec des services existants
  * D'ici, l'utilisateur peut utiliser un service existant
  */
-@WebServlet(name="Manager", urlPatterns="/manager")
+@WebServlet(name="Service", urlPatterns="/service")
 public class ServiceServlet extends HttpServlet {
 	private static final long serialVersionUID = 4744540075863839040L;
 
@@ -21,6 +21,6 @@ public class ServiceServlet extends HttpServlet {
     	response.setContentType("text/html");
         response.setCharacterEncoding( "UTF-8" );
         PrintWriter out = response.getWriter();
-        out.println("<!DOCTYPE html><html><body><h1>Manager</h1></body></html>");
+        out.println("<!DOCTYPE html><html><body><h1>Service</h1></body></html>");
     }
 }
