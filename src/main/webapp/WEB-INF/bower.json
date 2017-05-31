@@ -1,0 +1,14 @@
+{
+  "name": "QRServices",
+  "homepage": "https://github.com/zessirb/QRServices",
+  "authors": [
+    "Hugo Beaucamps <hugo.beaucamps@gmail.com>",
+    "Olivier Brissez <olivierbrissez@gmail.com"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "dependencies": {
+    "semantic": "semantic-ui#^2.2.10"
+  }
+}

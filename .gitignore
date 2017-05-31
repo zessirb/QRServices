@@ -4,3 +4,4 @@
 target
 .idea
 QRServices.iml
+/src/main/webapp/WEB-INF/bower_components
