@@ -27,6 +27,9 @@ public class LikeMeter {
 	/** Quantité de Like **/
 	@Column(name="count")
 	private int count;
+	/** Concaténation des IP ayant voté **/
+	@Column(name="loggedIp")
+	private String loggedIp;
 	
 	public int getId() {
 		return this.id;
@@ -45,5 +48,11 @@ public class LikeMeter {
 	}
 	public void setCount(int count) {
 		this.count = count;
+	}
+	public String getLoggedIp() {
+		return this.loggedIp;
+	}
+	public void setLoggedIp(String loggedIp) {
+		this.loggedIp = loggedIp;
 	}
 }

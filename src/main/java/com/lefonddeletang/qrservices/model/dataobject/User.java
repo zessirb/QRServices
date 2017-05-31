@@ -27,6 +27,12 @@ public class User {
 	/** Pseudo de l'utilisateur **/
 	@Column(name="name")
 	private String name;
+	/** Email de l'utilisateur **/
+	@Column(name="email")
+	private String email;
+	/** Mot de passe hashé de l'utilisateur **/
+	@Column(name="password")
+	private String password;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="userId")
@@ -43,6 +49,18 @@ public class User {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getEmail() {
+		return this.email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
+		return this.password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public List<Service> getServices() {
 		return this.services;

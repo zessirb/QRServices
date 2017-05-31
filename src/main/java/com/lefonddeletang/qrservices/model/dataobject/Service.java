@@ -25,6 +25,9 @@ public class Service {
 	/** Nom donné par l'utilisateur au service **/
 	@Column(name="name")
 	private String name;
+	/** Description donnée par l'utilisateur au service **/
+	@Column(name="description")
+	private String description;
 	
 	public int getId() {
 		return this.id;
@@ -43,5 +46,11 @@ public class Service {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getDescription() {
+		return this.description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }
