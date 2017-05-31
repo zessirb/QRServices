@@ -8,7 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title></title>
+    <!--# jquery #-->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <!--# semanticUI#-->
+    <script src="../bower_components/semantic/dist/semantic.min.js"></script>
+
 </head>
 <body>
 
