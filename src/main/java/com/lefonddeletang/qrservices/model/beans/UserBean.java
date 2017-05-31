@@ -1,4 +1,4 @@
-package com.lefonddeletang.qrservices.model.dataobject;
+package com.lefonddeletang.qrservices.model.beans;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -18,7 +19,9 @@ import java.util.List;
  */
 @Entity
 @Table(name="user")
-public class User {
+public class UserBean implements Serializable {
+	private static final long serialVersionUID = -6799034576915238724L;
+	
 	/** Identifiant de l'utilisateur **/
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -36,7 +39,7 @@ public class User {
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="userId")
-	private List<Service> services;
+	private List<ServiceBean> services;
 	
 	public int getId() {
 		return this.id;
@@ -62,10 +65,10 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public List<Service> getServices() {
+	public List<ServiceBean> getServices() {
 		return this.services;
 	}
-	public void setServices(List<Service> services) {
+	public void setServices(List<ServiceBean> services) {
 		this.services = services;
 	}
 }

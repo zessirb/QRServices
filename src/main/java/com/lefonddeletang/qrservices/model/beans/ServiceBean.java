@@ -1,7 +1,9 @@
-package com.lefonddeletang.qrservices.model.dataobject;
+package com.lefonddeletang.qrservices.model.beans;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -13,7 +15,9 @@ import javax.persistence.GenerationType;
  */
 @Entity
 @Table(name="service")
-public class Service {
+public class ServiceBean implements Serializable {
+	private static final long serialVersionUID = -6818546609936948142L;
+	
 	/** Identifiant du service **/
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

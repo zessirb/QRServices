@@ -1,7 +1,10 @@
-package com.lefonddeletang.qrservices.model.dataobject;
+package com.lefonddeletang.qrservices.model.beans;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -14,7 +17,9 @@ import javax.persistence.GenerationType;
  */
 @Entity
 @Table(name="likeMeter")
-public class LikeMeter {
+public class LikeMeterBean implements Serializable {
+	private static final long serialVersionUID = 1761316118765547209L;
+	
 	/** Identifiant du like meter **/
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
