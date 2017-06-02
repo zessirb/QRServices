@@ -8,11 +8,11 @@ Le projet est développé en Java EE et nécessite un serveur Tomcat pour foncti
 
 ## To-do liste
 
-### Mise en place de la base de données
-Installation d'une base mysql avec une connection par ORM Hibernate
+### Présentation compteur de Like
+Développement de la partie Présentation du compteur de Like, utilisant l'API du controller
 
-### Réaliser un premier module
-A cette fin, développer la logique et la vue nécessaire pour faire fonctionner l'un des modules possibles (compteur de like, sondage, livre d'or, redirection, ...)
+### Livre d'or
+Développement du module de livre d'or, présentation et traitement
 
 ### Réaliser une interface de management
 L'interface doit permettre à un utilisateur d'ajouter/modifier/supprimer des modules parmi la liste proposée.
