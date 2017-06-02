@@ -15,7 +15,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * DataObject représentant un utilisateur
+ * JavaBean représentant un utilisateur identifié
  */
 @Entity
 @Table(name="user")

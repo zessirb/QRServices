@@ -13,14 +13,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 /**
- * JavaBean représentant un compteur de Like
+ * JavaBean représentant un livre d'or
  */
 @Entity
-@Table(name="likeMeter")
-public class LikeMeterBean implements Serializable {
-	private static final long serialVersionUID = 1761316118765547209L;
-	
-	/** Identifiant du like meter **/
+@Table(name="guestbook")
+public class GuestbookBean implements Serializable {
+	private static final long serialVersionUID = -6276893650357809430L;
+
+	/** Identifiant du guestbook **/
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
@@ -29,12 +29,6 @@ public class LikeMeterBean implements Serializable {
 	@Column(name="serviceId")
 	@OneToOne(cascade=CascadeType.ALL)
 	private int serviceId;
-	/** Quantité de Like **/
-	@Column(name="count")
-	private int count;
-	/** Concaténation des IP ayant voté **/
-	@Column(name="loggedIp")
-	private String loggedIp;
 	
 	public int getId() {
 		return this.id;
@@ -47,17 +41,5 @@ public class LikeMeterBean implements Serializable {
 	}
 	public void setServiceId(int serviceId) {
 		this.serviceId = serviceId;
-	}
-	public int getCount() {
-		return this.count;
-	}
-	public void setCount(int count) {
-		this.count = count;
-	}
-	public String getLoggedIp() {
-		return this.loggedIp;
-	}
-	public void setLoggedIp(String loggedIp) {
-		this.loggedIp = loggedIp;
 	}
 }

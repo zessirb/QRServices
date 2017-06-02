@@ -54,4 +54,15 @@ public class LikeMeterDao {
 		session.getTransaction().commit();
 	}
 	
+	/**
+	 * Supprime un LikeMeter en base
+	 * 
+	 * @param likeMeter LikeMeter à supprimer
+	 */
+	public void deleteLikeMeter(LikeMeterBean likeMeter) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.getTransaction().begin();
+		session.delete(likeMeter);
+		session.getTransaction().commit();
+	}
 }

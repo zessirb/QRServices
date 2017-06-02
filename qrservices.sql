@@ -26,7 +26,7 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100),
   `email` varchar(100),
-  `password` varchar(500),
+  `password` varchar(200),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -44,7 +44,7 @@ CREATE TABLE `service` (
   `type` varchar(50),
   `name` varchar(100),
   `url` varchar(5),
-  `description` TEXT,
+  `description` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -60,7 +60,38 @@ CREATE TABLE `likemeter` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `serviceId` int(11) NOT NULL,
   `count` int(11) NOT NULL DEFAULT 0,
-  `loggedIp` TEXT,
+  `loggedIp` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `guestbook`
+--
+
+DROP TABLE IF EXISTS `guestbook`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `guestbook` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `serviceId` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `comment`
+--
+
+DROP TABLE IF EXISTS `comment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `guestbook` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `guestbookId` int(11) NOT NULL,
+  `title` varchar(200),
+  `content` text,
+  `author` varchar(100),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;

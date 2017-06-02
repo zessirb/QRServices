@@ -11,7 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 /**
- * DataObject représentant un service générique
+ * JavaBean représentant un service générique
  */
 @Entity
 @Table(name="service")

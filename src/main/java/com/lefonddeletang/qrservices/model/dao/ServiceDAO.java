@@ -22,8 +22,12 @@ public class ServiceDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Criteria criteria = session.createCriteria(ServiceBean.class);
 		criteria.add(Restrictions.eq("userId", userId));
-		List<ServiceBean> serviceList = (List<ServiceBean>) criteria.list();
-		return Optional.ofNullable(serviceList);
+		try {
+			List<ServiceBean> serviceList = (List<ServiceBean>) criteria.list();
+			return Optional.ofNullable(serviceList);
+		} catch (Exception e) {
+			return Optional.empty();
+		}
 	}
 	
 	/**
@@ -35,6 +39,18 @@ public class ServiceDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.getTransaction().begin();
 		session.save(service);
+		session.getTransaction().commit();
+	}
+	
+	/**
+	 * Supprime un Service en base
+	 * 
+	 * @param service Service à supprimer
+	 */
+	public void deleteService(ServiceBean service) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.getTransaction().begin();
+		session.delete(service);
 		session.getTransaction().commit();
 	}
 	
