@@ -25,6 +25,24 @@ public class LikeMeterAction {
 	}
 	
 	/**
+	 * Renvoie un booléen attestant la présence d'un vote d'un utilisateur pour un LikeMeter
+	 * 
+	 * @param serviceId Id du service du LikeMeter
+	 * @param userIp Ip de l'internaute
+	 * @return Booléen optionnel (true : utilisateur loggé, false : utilisateur non loggé, empty : erreur lors de la récupération du compteur)
+	 */
+	static Optional<Boolean> isUserLogged(int serviceId, String userIp) {
+		Optional<LikeMeterBean> optionalLikeMeter = dao.getLikeMeter(serviceId);
+		if (optionalLikeMeter.isPresent()) {
+			LikeMeterBean likeMeter = optionalLikeMeter.get();
+			String ipList = likeMeter.getLoggedIp();
+			return Optional.ofNullable(ipList.contains(userIp));
+		} else {
+			return Optional.empty();
+		}
+	}
+	
+	/**
 	 * Incrémente le compteur d'un LikeMeter si l'ip est inconnue
 	 * 
 	 * @param serviceId Id du service du LikeMeter
