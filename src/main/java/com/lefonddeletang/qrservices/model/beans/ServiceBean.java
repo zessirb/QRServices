@@ -29,6 +29,9 @@ public class ServiceBean implements Serializable {
 	/** Nom donné par l'utilisateur au service **/
 	@Column(name="name")
 	private String name;
+	/** Code à 5 lettres/chiffres utilisés dans l'URL d'accès **/
+	@Column(name="url")
+	private String url;
 	/** Description donnée par l'utilisateur au service **/
 	@Column(name="description")
 	private String description;
@@ -50,6 +53,12 @@ public class ServiceBean implements Serializable {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getUrl() {
+		return this.url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	public String getDescription() {
 		return this.description;

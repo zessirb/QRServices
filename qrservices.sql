@@ -43,6 +43,7 @@ CREATE TABLE `service` (
   `userId` int(11) NOT NULL,
   `type` varchar(50),
   `name` varchar(100),
+  `url` varchar(5),
   `description` TEXT,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
