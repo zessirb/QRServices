@@ -16,8 +16,8 @@ import javax.ws.rs.Path;
  * Servlet d'interactions avec des services existants
  * D'ici, l'utilisateur peut utiliser un service existant
  */
-@WebServlet(name="Service", urlPatterns="/service")
-public class ServiceServlet extends HttpServlet {
+@WebServlet(name="Service", urlPatterns="/services/likemeter")
+public class LikeMeterServlet extends HttpServlet {
 	private static final long serialVersionUID = 4744540075863839040L;
 	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 
@@ -25,7 +25,7 @@ public class ServiceServlet extends HttpServlet {
         String color = "blue";
         request.setAttribute("color" ,color);
         request.setAttribute("likeCount",526);
-        RequestDispatcher RequetsDispatcherObj =request.getRequestDispatcher("WEB-INF/view/likeMeter.jsp");
+        RequestDispatcher RequetsDispatcherObj =request.getRequestDispatcher("/WEB-INF/view/likeMeter.jsp");
         RequetsDispatcherObj.forward(request, response);
 
     	/*response.setContentType("text/html");
