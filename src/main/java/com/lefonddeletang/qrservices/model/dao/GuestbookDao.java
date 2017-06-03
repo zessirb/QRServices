@@ -12,12 +12,28 @@ import com.lefonddeletang.qrservices.model.util.HibernateUtil;
 public class GuestbookDao {
 	
 	/**
+	 * Requête la base et renvoie un Guestbook d'après son id
+	 * 
+	 * @param serviceId Id du service
+	 * @return GuestbookBean optionel
+	 */
+	public Optional<GuestbookBean> getGuestbook(int guestbookId) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		try {
+			GuestbookBean guestbook = session.get(GuestbookBean.class, guestbookId);
+			return Optional.ofNullable(guestbook);
+		} catch (Exception e) {
+			return Optional.empty();
+		}
+	}
+	
+	/**
 	 * Requête la base et renvoie un Guestbook d'après l'id du service
 	 * 
 	 * @param serviceId Id du service
 	 * @return GuestbookBean optionel
 	 */
-	public Optional<GuestbookBean> getGuestbook(int serviceId) {
+	public Optional<GuestbookBean> getGuestbookByService(int serviceId) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Criteria criteria = session.createCriteria(GuestbookBean.class);
 		criteria.add(Restrictions.eq("serviceId", serviceId));
