@@ -17,7 +17,7 @@ public class LikeMeterDao {
 	 * @param serviceId Id du service
 	 * @return LikeMeterBean optionel
 	 */
-	public Optional<LikeMeterBean> getLikeMeter(int serviceId) {
+	public Optional<LikeMeterBean> getLikeMeterByService(int serviceId) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Criteria criteria = session.createCriteria(LikeMeterBean.class);
 		criteria.add(Restrictions.eq("serviceId", serviceId));
