@@ -6,26 +6,31 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page isELIgnored="false" %>
 <html>
-<head>
-    <title></title>
-    <!--# jquery #-->
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <!--# semanticUI#-->
-    <script src="bower_components/semantic/dist/semantic.min.js"></script>
-    <link rel="stylesheet" href="bower_components/semantic/dist/semantic.min.css">
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="/WebContent/css/main.css">
+      <!--  <link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css">-->
+    </head>
+    <body>
 
-</head>
-<body>
-
-        <div class="ui labeled button" tabindex="0">
-            <div class="ui ${color} button">
-                <i class="heart icon"></i> Like
-            </div>
-            <a class="ui basic ${color} left pointing label">
-                ${likeCount}
-            </a>
-        </div>
-</body>
+    <div class="button-label ${liked}" tabindex="0">
+        <a class="button" href="#">
+            <i class="heart icon"></i>
+<c:choose>
+    <c:when test="${liked = true}">
+       Thanks
+    </c:when>
+    <c:otherwise>
+        Like
+    </c:otherwise>
+    </c:choose>
+        </a>
+                <span class="label">
+                   ${count}
+                </span>
+    </div>
+    </body>
 </html>

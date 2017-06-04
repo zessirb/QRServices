@@ -1,4 +1,4 @@
-package servlet;
+package com.lefonddeletang.qrservices.view.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
