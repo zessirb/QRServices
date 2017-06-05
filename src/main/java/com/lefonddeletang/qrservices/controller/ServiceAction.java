@@ -19,22 +19,67 @@ public class ServiceAction {
 	static private ServiceDao serviceDao = new ServiceDao();
 	
 	/**
-	 * Renvoie un texte identifiant la nature du service dont l'URL est fournie
+	 * Renvoie l'identifiant d'un service dont l'URL est fournie
 	 * 
 	 * @param url Section de l'URL correspondant au service
-	 * @return Texte (optionnel) identifiant le type de service, ou empty si non reconnu/inexistant
+	 * @return Identifiant (optionnel) du service, ou empty si inexistant
 	 */
-	static public Optional<String> getServiceTypeFromUrl(String url) {
+	static public Optional<Integer> getServiceIdFromUrl(String url) {
 		Optional<List<ServiceBean>> serviceList = serviceDao.getServicesByUrl(url);
 		if (serviceList.isPresent() && serviceList.get().size() > 0) {
 			try {
 				ServiceBean service = serviceList.get().get(0);
+				int serviceId = service.getId();
+				return Optional.ofNullable(serviceId);
+			} catch (Exception e) {
+				return Optional.empty();
+			}
+		} else {
+			return Optional.empty();
+		}
+	}
+	
+	/**
+	 * Renvoie le type d'un service à partir de son id, si le type est reconnu
+	 * 
+	 * @param id Identifiant du service
+	 * @return String (optionnel) désignant le type de service
+	 */
+	static public Optional<String> getServiceType(int id) {
+		Optional<ServiceBean> optionalService = serviceDao.getService(id);
+		if (optionalService.isPresent()) {
+			try {
+				ServiceBean service = optionalService.get();
 				String type = service.getType();
 				if (isServiceTypeExistant(type.toLowerCase())) {
 					return Optional.ofNullable(type.toLowerCase());
 				} else {
 					return Optional.empty();
 				}
+			} catch (Exception e) {
+				return Optional.empty();
+			}
+		} else {
+			return Optional.empty();
+		}
+	}
+	
+	/**
+	 * Renvoie un tableau contenant les textes concernant un service
+	 * 
+	 * @param id Identifiant du service
+	 * @return Tableau (optionnel) contenant l'URL, le nom et la description du service
+	 */
+	static public Optional<String[]> getServiceTexts(int id) {
+		Optional<ServiceBean> optionalService = serviceDao.getService(id);
+		if (optionalService.isPresent()) {
+			try {
+				ServiceBean service = optionalService.get();
+				String[] textArray = new String[3];
+				textArray[1] = service.getUrl();
+				textArray[2] = service.getName();
+				textArray[3] = service.getDescription();
+				return Optional.ofNullable(textArray);
 			} catch (Exception e) {
 				return Optional.empty();
 			}
