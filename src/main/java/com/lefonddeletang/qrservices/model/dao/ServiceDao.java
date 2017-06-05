@@ -47,6 +47,24 @@ public class ServiceDao {
 	}
 	
 	/**
+	 * Requête la base et renvoie le nombre de services utilisant une URL
+	 * 
+	 * @param url Code de l'URL à vérifier
+	 * @return Nombre (optionnel) de services utilisant une URL (supposé être 0 ou 1)
+	 */
+	public Optional<List<ServiceBean>> getServicesByUrl(String url) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Criteria criteria = session.createCriteria(ServiceBean.class);
+		criteria.add(Restrictions.eq("url", url));
+		try {
+			List<ServiceBean> serviceList = (List<ServiceBean>) criteria.list();
+			return Optional.ofNullable(serviceList);
+		} catch (Exception e) {
+			return Optional.empty();
+		}
+	}
+	
+	/**
 	 * Crée un Service en base
 	 * 
 	 * @param service Service à créer
