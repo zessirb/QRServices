@@ -76,9 +76,8 @@ public class LikeMeterAction {
 	 * 
 	 * @param userId Id de l'utilisateur créateur
 	 * @param serviceName Titre donné au service
-	 * @param serviceUrl Url fixée au service (A MODIFIER POUR RECUPERER D'UNE FONCTION)
 	 * @param serviceDescription Description donnée au service
-	 * @return
+	 * @return Booléen renvoyant vrai si aucune exception n'a été levée
 	 */
 	static public boolean createLikeMeter(int userId, String serviceName, String serviceDescription) {
 		try {

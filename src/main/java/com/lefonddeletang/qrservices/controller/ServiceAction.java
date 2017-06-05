@@ -1,8 +1,7 @@
 package com.lefonddeletang.qrservices.controller;
 
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 
@@ -14,13 +13,8 @@ public class ServiceAction {
 	static private int URLSIZE = 5;
 	/** Chaîne de caractères constante contenant tous les caractères autorisés dans les URL **/
 	static private String AUTHORIZEDURLCHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-	/** Map constante contenant tous les types de services (minuscules) et leur intitulé associé **/
-	static private Map<String, String> SERVICETYPES = new HashMap<String, String>() {
-		private static final long serialVersionUID = -7107276885097301553L;
-	{
-		put("likemeter", "likeMeter");
-		put("guestbook", "guestbook");
-	}};
+	/** Tableau contenant tous les types de services (minuscules) existant **/
+	static private List<String> SERVICETYPES = Arrays.asList("likemeter", "guestbook");
 	
 	static private ServiceDao serviceDao = new ServiceDao();
 	
@@ -30,14 +24,14 @@ public class ServiceAction {
 	 * @param url Section de l'URL correspondant au service
 	 * @return Texte (optionnel) identifiant le type de service, ou empty si non reconnu/inexistant
 	 */
-	static public Optional<String> getServiceType(String url) {
+	static public Optional<String> getServiceTypeFromUrl(String url) {
 		Optional<List<ServiceBean>> serviceList = serviceDao.getServicesByUrl(url);
 		if (serviceList.isPresent() && serviceList.get().size() > 0) {
 			try {
 				ServiceBean service = serviceList.get().get(0);
 				String type = service.getType();
-				if (SERVICETYPES.containsKey(type.toLowerCase())) {
-					return Optional.ofNullable(SERVICETYPES.get(type));
+				if (isServiceTypeExistant(type.toLowerCase())) {
+					return Optional.ofNullable(type.toLowerCase());
 				} else {
 					return Optional.empty();
 				}
@@ -47,6 +41,16 @@ public class ServiceAction {
 		} else {
 			return Optional.empty();
 		}
+	}
+	
+	/**
+	 * Valide l'existance du type de service correspondant au String fourni
+	 * 
+	 * @param type Type de service à vérifier
+	 * @return Booléen d'existance
+	 */
+	static public boolean isServiceTypeExistant(String type) {
+		return SERVICETYPES.contains(type.toLowerCase());
 	}
 
 	/**
