@@ -36,6 +36,9 @@
 .like .button{
     background: #e74c3c;
     box-shadow: inset 0 0 0 0 #c0392b;
+
+    border:none;
+
 }
 form{
     margin: 0;
