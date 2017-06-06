@@ -7,62 +7,62 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
 import com.lefonddeletang.qrservices.model.util.HibernateUtil;
-import com.lefonddeletang.qrservices.model.beans.LikeMeterBean;
+import com.lefonddeletang.qrservices.model.beans.NewsletterBean;
 
-public class LikeMeterDao {
+public class NewsletterDao {
 	
 	/**
-	 * Requête la base et renvoie un LikeMeter d'après l'id du service
+	 * Requête la base et renvoie une Newsletter d'après l'id du service
 	 * 
 	 * @param serviceId Id du service
-	 * @return LikeMeterBean optionel
+	 * @return NewsletterBean optionel
 	 */
-	public Optional<LikeMeterBean> getLikeMeterByService(int serviceId) {
+	public Optional<NewsletterBean> getNewsletterByService(int serviceId) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		Criteria criteria = session.createCriteria(LikeMeterBean.class);
+		Criteria criteria = session.createCriteria(NewsletterBean.class);
 		criteria.add(Restrictions.eq("serviceId", serviceId));
 		criteria.setFirstResult(0).setMaxResults(1);
 		try {
-			LikeMeterBean likeMeter = (LikeMeterBean) criteria.list().get(0);
-			return Optional.ofNullable(likeMeter);
+			NewsletterBean newsletter = (NewsletterBean) criteria.list().get(0);
+			return Optional.ofNullable(newsletter);
 		} catch (IndexOutOfBoundsException e) {
 			return Optional.empty();
 		}
 	}
 	
 	/**
-	 * Met à jour un LikeMeter en base
+	 * Met à jour une Newsletter en base
 	 * 
-	 * @param likeMeter LikeMeter mis à jour
+	 * @param newsletter Newsletter mis à jour
 	 */
-	public void updateLikeMeter(LikeMeterBean likeMeter) {
+	public void updateNewsletter(NewsletterBean newsletter) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.getTransaction().begin();
-		session.saveOrUpdate(likeMeter);
+		session.saveOrUpdate(newsletter);
 		session.getTransaction().commit();
 	}
 	
 	/**
-	 * Crée un LikeMeter en base
+	 * Crée une Newsletter en base
 	 * 
-	 * @param likeMeter LikeMeter à créer
+	 * @param Newsletter Newsletter à créer
 	 */
-	public void addLikeMeter(LikeMeterBean likeMeter) {
+	public void addNewsletter(NewsletterBean newsletter) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.getTransaction().begin();
-		session.save(likeMeter);
+		session.save(newsletter);
 		session.getTransaction().commit();
 	}
 	
 	/**
-	 * Supprime un LikeMeter en base
+	 * Supprime une Newsletter en base
 	 * 
-	 * @param likeMeter LikeMeter à supprimer
+	 * @param newsletter Newsletter à supprimer
 	 */
-	public void deleteLikeMeter(LikeMeterBean likeMeter) {
+	public void deleteNewsletter(NewsletterBean newsletter) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.getTransaction().begin();
-		session.delete(likeMeter);
+		session.delete(newsletter);
 		session.getTransaction().commit();
 	}
 }

@@ -8,8 +8,8 @@ import com.lefonddeletang.qrservices.model.dao.LikeMeterDao;
 import com.lefonddeletang.qrservices.model.dao.ServiceDao;
 
 public class LikeMeterAction {
-	static LikeMeterDao likeMeterDao = new LikeMeterDao();
-	static ServiceDao serviceDao = new ServiceDao();
+	static private LikeMeterDao likeMeterDao = new LikeMeterDao();
+	static private ServiceDao serviceDao = new ServiceDao();
 	
 	/**
 	 * Renvoie le compte actuel du LikeMeter
@@ -17,8 +17,8 @@ public class LikeMeterAction {
 	 * @param serviceId Id du service du LikeMeter
 	 * @return Entier optionnel (empty si erreur lors de la récupération du compteur)
 	 */
-	static Optional<Integer> getLikeCount(int serviceId) {
-		Optional<LikeMeterBean> optionalLikeMeter = likeMeterDao.getLikeMeter(serviceId);
+	static public Optional<Integer> getLikeCount(int serviceId) {
+		Optional<LikeMeterBean> optionalLikeMeter = likeMeterDao.getLikeMeterByService(serviceId);
 		if (optionalLikeMeter.isPresent()) {
 			LikeMeterBean likeMeter = optionalLikeMeter.get();
 			return Optional.ofNullable(likeMeter.getCount());
@@ -34,8 +34,8 @@ public class LikeMeterAction {
 	 * @param userIp Ip de l'internaute
 	 * @return Booléen optionnel (true : utilisateur loggé, false : utilisateur non loggé, empty : erreur lors de la récupération du compteur)
 	 */
-	static Optional<Boolean> isUserLogged(int serviceId, String userIp) {
-		Optional<LikeMeterBean> optionalLikeMeter = likeMeterDao.getLikeMeter(serviceId);
+	static public Optional<Boolean> isUserLogged(int serviceId, String userIp) {
+		Optional<LikeMeterBean> optionalLikeMeter = likeMeterDao.getLikeMeterByService(serviceId);
 		if (optionalLikeMeter.isPresent()) {
 			LikeMeterBean likeMeter = optionalLikeMeter.get();
 			String ipList = likeMeter.getLoggedIp();
@@ -52,8 +52,8 @@ public class LikeMeterAction {
 	 * @param userIp Ip de l'internaute
 	 * @return Booléen optionnel (true : like ajouté, false : ip déjà loggée, empty : erreur lors de la récupération du compteur
 	 */
-	static Optional<Boolean> addLike(int serviceId, String userIp) {
-		Optional<LikeMeterBean> optionalLikeMeter = likeMeterDao.getLikeMeter(serviceId);
+	static public Optional<Boolean> addLike(int serviceId, String userIp) {
+		Optional<LikeMeterBean> optionalLikeMeter = likeMeterDao.getLikeMeterByService(serviceId);
 		if (optionalLikeMeter.isPresent()) {
 			LikeMeterBean likeMeter = optionalLikeMeter.get();
 			String ipList = likeMeter.getLoggedIp();
@@ -76,22 +76,26 @@ public class LikeMeterAction {
 	 * 
 	 * @param userId Id de l'utilisateur créateur
 	 * @param serviceName Titre donné au service
-	 * @param serviceUrl Url fixée au service (A MODIFIER POUR RECUPERER D'UNE FONCTION)
 	 * @param serviceDescription Description donnée au service
-	 * @return
+	 * @return Booléen renvoyant vrai si aucune exception n'a été levée
 	 */
-	static boolean createLikeMeter(int userId, String serviceName, String serviceUrl, String serviceDescription) {
+	static public boolean createLikeMeter(int userId, String serviceName, String serviceDescription) {
 		try {
 			ServiceBean service = new ServiceBean();
 			service.setUserId(userId);
 			service.setName(serviceName);
-			service.setUrl(serviceUrl);
-			service.setDescription(serviceDescription);
-			serviceDao.addService(service);
-			LikeMeterBean likeMeter = new LikeMeterBean();
-			likeMeter.setServiceId(service.getId());
-			likeMeterDao.addLikeMeter(likeMeter);
-			return true;
+			Optional<String> optionalUrl = ServiceAction.generateUrl();
+			if (!optionalUrl.isPresent()) {
+				return false;
+			} else {
+				service.setUrl(optionalUrl.get());
+				service.setDescription(serviceDescription);
+				serviceDao.addService(service);
+				LikeMeterBean likeMeter = new LikeMeterBean();
+				likeMeter.setServiceId(service.getId());
+				likeMeterDao.addLikeMeter(likeMeter);
+				return true;
+			}
 		} catch (Exception e) {
 			return false;
 		}
@@ -103,8 +107,8 @@ public class LikeMeterAction {
 	 * @param serviceId Id du service associé au LikeMeter
 	 * @return Boléen attestant que le LikeMeter existait
 	 */
-	static boolean deleteLikeMeter(int serviceId) {
-		Optional<LikeMeterBean> optionalLikeMeter = likeMeterDao.getLikeMeter(serviceId);
+	static public boolean deleteLikeMeter(int serviceId) {
+		Optional<LikeMeterBean> optionalLikeMeter = likeMeterDao.getLikeMeterByService(serviceId);
 		Optional<ServiceBean> optionalService = serviceDao.getService(serviceId);
 		if (optionalLikeMeter.isPresent() && optionalService.isPresent()) {
 			likeMeterDao.deleteLikeMeter(optionalLikeMeter.get());

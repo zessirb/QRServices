@@ -26,6 +26,9 @@ public class ServiceBean implements Serializable {
 	/** Identifiant de l'utilisateur associé **/
 	@Column(name="userId")
 	private int userId;
+	/** Texte correspondant au type du service **/
+	@Column(name="type")
+	private String type;
 	/** Nom donné par l'utilisateur au service **/
 	@Column(name="name")
 	private String name;
@@ -47,6 +50,12 @@ public class ServiceBean implements Serializable {
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+	public String getType() {
+		return this.type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	public String getName() {
 		return this.name;
