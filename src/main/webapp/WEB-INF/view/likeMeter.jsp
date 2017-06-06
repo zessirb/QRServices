@@ -16,11 +16,15 @@
     </head>
     <body>
 
-    <div class="button-label ${liked}" tabindex="0">
-        <a class="button" href="#">
-            <i class="heart icon"></i>
+    <div class="button-label like" tabindex="0">
+        <form method="post" action="/services/${url}">
+            <button type="submit" class="ui button" href="#">
+                <i class="heart icon"></i>
+            </button>
+        </form>
+
 <c:choose>
-    <c:when test="${liked = true}">
+    <c:when test="${liked == true}">
        Thanks
     </c:when>
     <c:otherwise>
