@@ -1,5 +1,6 @@
 package com.lefonddeletang.qrservices.view.servlet;
 
+import com.lefonddeletang.qrservices.controller.LikeMeterAction;
 import com.lefonddeletang.qrservices.view.handler.ServiceHander;
 
 import javax.servlet.ServletException;
@@ -21,9 +22,8 @@ public class ServiceServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = (String)req.getAttribute("id");
         req.setAttribute("id",id);
-        ServiceHander sh = ServiceHander.getInstance();
-        sh.dispatche(this.getServletContext(),req,resp);
 
+        LikeMeterAction.createLikeMeter(1,"likeMeter","Azer1","compteur de like");
         req.setAttribute("liked",true);
         req.setAttribute("count",495);
 
