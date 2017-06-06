@@ -86,7 +86,7 @@ CREATE TABLE `guestbook` (
 DROP TABLE IF EXISTS `comment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `guestbook` (
+CREATE TABLE `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `guestbookId` int(11) NOT NULL,
   `title` varchar(200),
