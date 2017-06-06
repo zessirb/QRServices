@@ -1,16 +1,8 @@
 package com.lefonddeletang.qrservices.model.beans;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import java.io.Serializable;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 
 /**
  * JavaBean représentant un compteur de Like
@@ -26,8 +18,9 @@ public class LikeMeterBean implements Serializable {
 	@Column(name="id")
 	private int id;
 	/** Identifiant du service générique associé **/
+
+
 	@Column(name="serviceId")
-	@OneToOne(cascade=CascadeType.ALL)
 	private int serviceId;
 	/** Quantité de Like **/
 	@Column(name="count")
