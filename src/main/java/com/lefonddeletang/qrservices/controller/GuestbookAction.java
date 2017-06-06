@@ -22,7 +22,7 @@ public class GuestbookAction {
 	 * @param guestbookId Id du service du guestbook
 	 * @return Liste (optionnelle) contenant un tableau de String par commentaire (composé du titre, du contenu et de la signature)
 	 */
-	static Optional<List<String[]>> getGuestbookComments(int serviceId) {
+	static public Optional<List<String[]>> getGuestbookComments(int serviceId) {
 		Optional<List<CommentBean>> optionalComments = commentDao.getCommentsByGuestbook(serviceId);
 		if (optionalComments.isPresent()) {
 			List<CommentBean> comments = optionalComments.get();
