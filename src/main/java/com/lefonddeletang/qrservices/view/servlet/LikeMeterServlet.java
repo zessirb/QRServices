@@ -2,7 +2,6 @@ package com.lefonddeletang.qrservices.view.servlet;
 
 import com.lefonddeletang.qrservices.controller.LikeMeterAction;
 import com.lefonddeletang.qrservices.controller.ServiceAction;
-import com.lefonddeletang.qrservices.view.handler.ServiceHander;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,8 +15,8 @@ import java.util.Optional;
 /**
  * Created by hugo on 02/06/2017.
  */
-@WebServlet(name="Service", urlPatterns="/services/*")
-public class ServiceServlet extends HttpServlet {
+@WebServlet(name="LikeMeterService", urlPatterns="/service/likemeter/*")
+public class LikeMeterServlet extends HttpServlet {
 
     private final String PATH_VIEW = "/WEB-INF/view/";
     @Override
@@ -25,7 +24,7 @@ public class ServiceServlet extends HttpServlet {
         int id = (Integer)req.getAttribute("id");
 
         Optional<Integer> countOptional =LikeMeterAction.getLikeCount(id);
-        Optional<Boolean> likedOptional = LikeMeterAction.isUserLogged(1,req.getRemoteAddr());
+        Optional<Boolean> likedOptional = LikeMeterAction.isUserLogged(id,req.getRemoteAddr());
         int count = countOptional.isPresent()? countOptional.get() : 0;
         boolean liked = likedOptional.isPresent()? likedOptional.get():false;
         req.setAttribute("liked",liked);
@@ -40,7 +39,7 @@ public class ServiceServlet extends HttpServlet {
         int id = (Integer)req.getAttribute("id");
         LikeMeterAction.addLike(id,ip);
 
-        //resp.sendRedirect(req.getRequestURI());
+        resp.sendRedirect("/services/"+req.getAttribute("url"));
     }
 
 

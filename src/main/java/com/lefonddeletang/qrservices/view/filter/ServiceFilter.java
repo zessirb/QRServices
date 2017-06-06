@@ -23,17 +23,23 @@ public class ServiceFilter implements  javax.servlet.Filter  {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String[] url = request.getRequestURI().split("/");
-        String id = url[url.length-1];
-        if (id == null || id== "") {
+        String urlpart = url[url.length-1];
+        if (urlpart == null || urlpart== "") {
             response.sendError(400);
-        } else if (!ServiceAction.getServiceIdFromUrl(id).isPresent()){
+        } else if (!ServiceAction.getServiceIdFromUrl(urlpart).isPresent()){
             response.sendError(404);
         } else {
-                request.setAttribute("url",id);
-                request.setAttribute("id", ServiceAction.getServiceIdFromUrl(id).get());
-                filterChain.doFilter(request,response);
-            }
+
+            int id = ServiceAction.getServiceIdFromUrl(urlpart).get();
+            String type = ServiceAction.getServiceType(id).get();
+            request.setAttribute("url",urlpart);
+            request.setAttribute("id", id);
+
+            String newURI= "/service/"+type+"/"+urlpart;
+            request.getRequestDispatcher(newURI).forward(request, response);
+           // filterChain.doFilter(request,response);
         }
+    }
 
 
     public void destroy() {
