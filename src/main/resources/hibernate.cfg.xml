@@ -5,15 +5,17 @@
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/qrservices?serverTimezone=UTC</property>
 		<property name="hibernate.connection.username">root</property>
-		<property name="hibernate.connection.password">Azerty!59000</property>
+		<property name="hibernate.connection.password"></property>
 		<property name="hibernate.connection.pool_size">10</property>
 		<property name="show_sql">true</property>
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.current_session_context_class">thread</property>
 		
-		<mapping class="com.lefonddeletang.qrservices.model.dataobject.User"/>
-		<mapping class="com.lefonddeletang.qrservices.model.dataobject.Service"/>
-		<mapping class="com.lefonddeletang.qrservices.model.dataobject.LikeMeter"/>
+		<mapping class="com.lefonddeletang.qrservices.model.beans.UserBean"/>
+		<mapping class="com.lefonddeletang.qrservices.model.beans.ServiceBean"/>
+		<mapping class="com.lefonddeletang.qrservices.model.beans.LikeMeterBean"/>
+
+
 	</session-factory>
 	
 </hibernate-configuration>

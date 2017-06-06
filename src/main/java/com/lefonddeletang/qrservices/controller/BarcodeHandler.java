@@ -18,14 +18,14 @@ public class BarcodeHandler {
 	 * @param url URL à encoder
 	 * @return Tableau (optionnel) de bytes
 	 */
-	static public Optional<byte[]> generateBarcodeFromUrl(String url) {
+	static public Optional<ByteArrayOutputStream> generateBarcodeFromUrl(String url) {
 		ByteArrayOutputStream stream = QRCode.from(url)
 				.withSize(BARCODESIDESIZE, BARCODESIDESIZE)
 				.to(IMAGETYPE)
 				.stream();
 		try {
-			byte[] bytes = stream.toByteArray();
-			return Optional.ofNullable(bytes);
+			//byte[] bytes = stream.toByteArray();
+			return Optional.ofNullable(stream);
 		} catch (Exception e) {
 			return Optional.empty();
 		}
