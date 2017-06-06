@@ -11,16 +11,17 @@
 <html>
     <head>
         <title></title>
-        <link rel="stylesheet" href="/WebContent/css/main.css">
-      <!--  <link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css">-->
+
+      <link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css">
+
     </head>
     <body>
+    <form method="post" action="/services/${url}">
+    <div class="ui labeled button" tabindex="0">
 
-    <div class="button-label like" tabindex="0">
-        <form method="post" action="/services/${url}">
-            <button type="submit" class="ui button" href="#">
-                <i class="heart icon"></i>
-                <c:choose>
+        <button type="submit" class="ui ${liked ? "yellow" : 'red'} button">
+            <i class="heart icon"></i>
+            <c:choose>
                 <c:when test="${liked == true}">
                     Thanks
                 </c:when>
@@ -28,12 +29,12 @@
                     Like
                 </c:otherwise>
             </c:choose>
-            </button>
-        </form>
+        </button>
 
-                <span class="label">
-                   ${count}
-                </span>
-    </div>
+        <a class="ui basic ${liked ? "yellow" : 'red'} left pointing label">
+            ${count}
+        </a>
+       </div>
+    </form>
     </body>
 </html>
