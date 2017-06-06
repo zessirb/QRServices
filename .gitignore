@@ -4,7 +4,11 @@
 target
 .idea
 QRServices.iml
+/src/main/webapp/bower_components
+/src/main/resources/hibernate.cfg.xml
+/META-INF/application.xml
 conception/database.dia.autosave
 conception/database.dia~
 conception/database.dia.autosave
 conception/sequence_service.dia~
+

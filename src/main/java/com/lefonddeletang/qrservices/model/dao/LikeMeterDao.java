@@ -12,18 +12,15 @@ import com.lefonddeletang.qrservices.model.beans.LikeMeterBean;
 public class LikeMeterDao {
 	
 	/**
-	 * Requête la base et renvoie un LikeMeter d'après l'id du service
+	 * Requête la base et renvoie un LikeMeter d'après son id
 	 * 
-	 * @param serviceId Id du service
+	 * @param id Identifant du LikeMeter
 	 * @return LikeMeterBean optionel
 	 */
-	public Optional<LikeMeterBean> getLikeMeterByService(int serviceId) {
+	public Optional<LikeMeterBean> getLikeMeter(int id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		Criteria criteria = session.createCriteria(LikeMeterBean.class);
-		criteria.add(Restrictions.eq("serviceId", serviceId));
-		criteria.setFirstResult(0).setMaxResults(1);
 		try {
-			LikeMeterBean likeMeter = (LikeMeterBean) criteria.list().get(0);
+			LikeMeterBean likeMeter = session.get(LikeMeterBean.class, id);
 			return Optional.ofNullable(likeMeter);
 		} catch (IndexOutOfBoundsException e) {
 			return Optional.empty();
