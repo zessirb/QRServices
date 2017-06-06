@@ -13,12 +13,12 @@ public class LikeMeterAction {
 	
 	/**
 	 * Renvoie le compte actuel du LikeMeter
-	 * 
-	 * @param likeMeterId Id du LikeMeter
+	 *
+	 * @param serviceId Id du LikeMeter
 	 * @return Entier optionnel (empty si erreur lors de la récupération du compteur)
 	 */
-	static public Optional<Integer> getLikeCount(int likeMeterId) {
-		Optional<LikeMeterBean> optionalLikeMeter = likeMeterDao.getLikeMeter(likeMeterId);
+	static public Optional<Integer> getLikeCount(int serviceId) {
+		Optional<LikeMeterBean> optionalLikeMeter = likeMeterDao.getLikeMeterByService(serviceId);
 		if (optionalLikeMeter.isPresent()) {
 			LikeMeterBean likeMeter = optionalLikeMeter.get();
 			return Optional.ofNullable(likeMeter.getCount());
@@ -30,12 +30,12 @@ public class LikeMeterAction {
 	/**
 	 * Renvoie un booléen attestant la présence d'un vote d'un utilisateur pour un LikeMeter
 	 *
-	 * @param likeMeterId Id du LikeMeter
+	 * @param serviceId Id du LikeMeter
 	 * @param userIp Ip de l'internaute
 	 * @return Booléen optionnel (true : utilisateur loggé, false : utilisateur non loggé, empty : erreur lors de la récupération du compteur)
 	 */
-	static public Optional<Boolean> isUserLogged(int likeMeterId, String userIp) {
-		Optional<LikeMeterBean> optionalLikeMeter = likeMeterDao.getLikeMeter(likeMeterId);
+	static public Optional<Boolean> isUserLogged(int serviceId, String userIp) {
+		Optional<LikeMeterBean> optionalLikeMeter = likeMeterDao.getLikeMeterByService(serviceId);
 		if (optionalLikeMeter.isPresent()) {
 			LikeMeterBean likeMeter = optionalLikeMeter.get();
 			String ipList = likeMeter.getLoggedIp();
@@ -48,12 +48,12 @@ public class LikeMeterAction {
 	/**
 	 * Incrémente le compteur d'un LikeMeter si l'ip est inconnue
 	 * 
-	 * @param likeMeterId Id du LikeMeter
+	 * @param serviceId Id du LikeMeter
 	 * @param userIp Ip de l'internaute
 	 * @return Booléen optionnel (true : like ajouté, false : ip déjà loggée, empty : erreur lors de la récupération du compteur
 	 */
-	static public Optional<Boolean> addLike(int likeMeterId, String userIp) {
-		Optional<LikeMeterBean> optionalLikeMeter = likeMeterDao.getLikeMeter(likeMeterId);
+	static public Optional<Boolean> addLike(int serviceId, String userIp) {
+		Optional<LikeMeterBean> optionalLikeMeter = likeMeterDao.getLikeMeterByService(serviceId);
 		if (optionalLikeMeter.isPresent()) {
 			LikeMeterBean likeMeter = optionalLikeMeter.get();
 			String ipList = likeMeter.getLoggedIp();
@@ -84,6 +84,7 @@ public class LikeMeterAction {
 			ServiceBean service = new ServiceBean();
 			service.setUserId(userId);
 			service.setName(serviceName);
+			service.setName("likemeter");
 			Optional<String> optionalUrl = ServiceAction.generateUrl();
 			if (!optionalUrl.isPresent()) {
 				return false;

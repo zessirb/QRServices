@@ -31,7 +31,11 @@ public class ServiceFilter implements  javax.servlet.Filter  {
         } else {
 
             int id = ServiceAction.getServiceIdFromUrl(urlpart).get();
-            String type = ServiceAction.getServiceType(id).get();
+            if(!ServiceAction.getServiceType(id).isPresent()){
+                response.sendError(404);
+            }
+
+            String type =  ServiceAction.getServiceType(id).get();
             request.setAttribute("url",urlpart);
             request.setAttribute("id", id);
 

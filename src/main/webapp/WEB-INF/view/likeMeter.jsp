@@ -10,7 +10,7 @@
 <%@ page isELIgnored="false" %>
 <html>
     <head>
-        <title></title>
+        <title>Like meter</title>
 
       <link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css">
 

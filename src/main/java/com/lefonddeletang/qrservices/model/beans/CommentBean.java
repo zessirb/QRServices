@@ -27,7 +27,7 @@ public class CommentBean implements Serializable {
 	private int id;
 	/** Identifiant du livre d'or associé **/
 	@Column(name="guestbookId")
-	@OneToOne(cascade=CascadeType.ALL)
+
 	private int guestbookId;
 	/** Titre du commentaire (phrase mise en avant) **/
 	@Column(name="title")

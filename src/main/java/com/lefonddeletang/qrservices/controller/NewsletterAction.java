@@ -40,7 +40,7 @@ public class NewsletterAction {
 		Optional<NewsletterBean> optionalNewsletter = newsletterDao.getNewsletterByService(serviceId);
 		if (optionalNewsletter.isPresent()) {
 			NewsletterBean newsletter = optionalNewsletter.get();
-			String emailList = newsletter.getEmails();
+			String emailList = newsletter.getEmails() !=null? newsletter.getEmails():"";
 			if (!emailList.contains(email)) {
 				emailList += ";"+email;
 				newsletter.setEmails(emailList);
@@ -73,6 +73,7 @@ public class NewsletterAction {
 			} else {
 				service.setUrl(optionalUrl.get());
 				service.setDescription(serviceDescription);
+				service.setType("newsletter");
 				serviceDao.addService(service);
 				NewsletterBean newsletter = new NewsletterBean();
 				newsletter.setServiceId(service.getId());

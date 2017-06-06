@@ -19,11 +19,12 @@ public class GuestbookAction {
 	/**
 	 * Renvoie les textes des commentaires d'un guestbook
 	 * 
-	 * @param guestbookId Id du service du guestbook
+	 * @param serviceId Id du service du guestbook
 	 * @return Liste (optionnelle) contenant un tableau de String par commentaire (composé du titre, du contenu et de la signature)
 	 */
-	static public Optional<List<String[]>> getGuestbookComments(int serviceId) {
-		Optional<List<CommentBean>> optionalComments = commentDao.getCommentsByGuestbook(serviceId);
+	static public Optional<List<String[]>> getGuestbookCommentsbyServiceId(int serviceId) {
+		int guestbookId = guestbookDao.getGuestbookByService(serviceId).get().getId();
+		Optional<List<CommentBean>> optionalComments = commentDao.getCommentsByGuestbook(guestbookId);
 		if (optionalComments.isPresent()) {
 			List<CommentBean> comments = optionalComments.get();
 			List<String[]> commentsContent = new ArrayList<String[]>();
@@ -40,21 +41,22 @@ public class GuestbookAction {
 		}
 	}
 
+
 	/**
 	 * Crée un commentaire pour le livre d'or ciblé
 	 * 
-	 * @param guestbookId Identifiant du livre d'or
+	 * @param serviceId Identifiant du service
 	 * @param title Titre du commentaire
 	 * @param content Contenu du commentaire
 	 * @param author Auteur ou signature du commentaire
 	 * @return Booléen vérifiant que le Guestbook a été trouvé et qu'aucune exception n'a été soulevée
 	 */
-	static public boolean createComment(int guestbookId, String title, String content, String author) {
-		Optional<GuestbookBean> guestbook = guestbookDao.getGuestbook(guestbookId);
+	static public boolean createComment(int serviceId, String title, String content, String author) {
+		Optional<GuestbookBean> guestbook = guestbookDao.getGuestbookByService(serviceId);
 		if (guestbook.isPresent()) {
 			try {
 				CommentBean comment = new CommentBean();
-				comment.setGuestbookId(guestbookId);
+				comment.setGuestbookId(guestbook.get().getId());
 				comment.setTitle(title);
 				comment.setContent(content);
 				comment.setAuthor(author);
@@ -81,6 +83,7 @@ public class GuestbookAction {
 			ServiceBean service = new ServiceBean();
 			service.setUserId(userId);
 			service.setName(serviceName);
+			service.setType("guestbook");
 			Optional<String> optionalUrl = ServiceAction.generateUrl();
 			if (!optionalUrl.isPresent()) {
 				return false;

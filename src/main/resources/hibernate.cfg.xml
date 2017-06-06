@@ -14,6 +14,9 @@
 		<mapping class="com.lefonddeletang.qrservices.model.beans.UserBean"/>
 		<mapping class="com.lefonddeletang.qrservices.model.beans.ServiceBean"/>
 		<mapping class="com.lefonddeletang.qrservices.model.beans.LikeMeterBean"/>
+		<mapping class="com.lefonddeletang.qrservices.model.beans.GuestbookBean"/>
+		<mapping class="com.lefonddeletang.qrservices.model.beans.CommentBean"/>
+		<mapping class="com.lefonddeletang.qrservices.model.beans.NewsletterBean"/>
 
 
 	</session-factory>

@@ -27,7 +27,6 @@ public class GuestbookBean implements Serializable {
 	private int id;
 	/** Identifiant du service générique associé **/
 	@Column(name="serviceId")
-	@OneToOne(cascade=CascadeType.ALL)
 	private int serviceId;
 	
 	public int getId() {

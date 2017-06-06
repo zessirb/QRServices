@@ -14,7 +14,7 @@ public class ServiceAction {
 	/** Chaîne de caractères constante contenant tous les caractères autorisés dans les URL **/
 	static private String AUTHORIZEDURLCHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 	/** Tableau contenant tous les types de services (minuscules) existant **/
-	static private List<String> SERVICETYPES = Arrays.asList("likemeter", "guestbook");
+	static private List<String> SERVICETYPES = Arrays.asList("likemeter", "guestbook","newsletter");
 	
 	static private ServiceDao serviceDao = new ServiceDao();
 	

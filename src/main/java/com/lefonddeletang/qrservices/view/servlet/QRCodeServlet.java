@@ -16,12 +16,20 @@ import java.io.OutputStream;
 /**
  * Created by hugo on 06/06/2017.
  */
-@WebServlet(name="qrcode", urlPatterns="/services/qrcode/*")
+@WebServlet(name="qrcode", urlPatterns="/qrcode/*")
 public class QRCodeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        ByteArrayOutputStream out = BarcodeHandler.generateBarcodeFromUrl("test").get();
+        String[] url = req.getRequestURI().split("/");
+        String urlpart = url[url.length-1];
+        if (urlpart == null || urlpart== "") {
+            resp.sendError(400);
+        }
+
+
+
+        ByteArrayOutputStream out = BarcodeHandler.generateBarcodeFromUrl(req.getServerName()+":"+req.getServerPort()+"/services/"+urlpart).get();
 
         resp.setContentType("image/png");
         resp.setContentLength(out.size());

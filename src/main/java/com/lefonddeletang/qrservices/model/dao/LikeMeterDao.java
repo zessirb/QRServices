@@ -26,6 +26,25 @@ public class LikeMeterDao {
 			return Optional.empty();
 		}
 	}
+
+	/**
+	 * Requête la base et renvoie un LikeMeter d'après l'id du service
+	 *
+	 * @param serviceId Id du service
+	 * @return LikeMeterBean optionel
+	 */
+	public Optional<LikeMeterBean> getLikeMeterByService(int serviceId) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Criteria criteria = session.createCriteria(LikeMeterBean.class);
+		criteria.add(Restrictions.eq("serviceId", serviceId));
+		criteria.setFirstResult(0).setMaxResults(1);
+		try {
+			LikeMeterBean likeMeter = (LikeMeterBean) criteria.list().get(0);
+			return Optional.ofNullable(likeMeter);
+		} catch (Exception e) {
+			return Optional.empty();
+		}
+	}
 	
 	/**
 	 * Met à jour un LikeMeter en base
