@@ -108,7 +108,7 @@ public class LikeMeterAction {
 	 * @param serviceId Id du service associé au LikeMeter
 	 * @return Boléen attestant que le LikeMeter existait
 	 */
-	/*static public boolean deleteLikeMeter(int serviceId) {
+	static public boolean deleteLikeMeter(int serviceId) {
 		Optional<LikeMeterBean> optionalLikeMeter = likeMeterDao.getLikeMeter(serviceId);
 		Optional<ServiceBean> optionalService = serviceDao.getService(serviceId);
 		if (optionalLikeMeter.isPresent() && optionalService.isPresent()) {
@@ -118,5 +118,5 @@ public class LikeMeterAction {
 		} else {
 			return false;
 		}
-	}*/
+	}
 }
