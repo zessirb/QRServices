@@ -38,7 +38,7 @@ public class LikeMeterAction {
 		Optional<LikeMeterBean> optionalLikeMeter = likeMeterDao.getLikeMeterByService(serviceId);
 		if (optionalLikeMeter.isPresent()) {
 			LikeMeterBean likeMeter = optionalLikeMeter.get();
-			String ipList = likeMeter.getLoggedIp();
+			String ipList = likeMeter.getLoggedIp()==null?"":likeMeter.getLoggedIp();
 			return Optional.ofNullable(ipList.contains(userIp));
 		} else {
 			return Optional.empty();
@@ -56,7 +56,7 @@ public class LikeMeterAction {
 		Optional<LikeMeterBean> optionalLikeMeter = likeMeterDao.getLikeMeterByService(serviceId);
 		if (optionalLikeMeter.isPresent()) {
 			LikeMeterBean likeMeter = optionalLikeMeter.get();
-			String ipList = likeMeter.getLoggedIp();
+			String ipList = likeMeter.getLoggedIp()==null?"" :likeMeter.getLoggedIp();
 			if (!ipList.contains(userIp)) {
 				ipList += ";"+userIp;
 				likeMeter.setLoggedIp(ipList);
