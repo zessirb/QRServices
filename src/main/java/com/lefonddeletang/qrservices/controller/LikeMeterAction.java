@@ -84,7 +84,7 @@ public class LikeMeterAction {
 			ServiceBean service = new ServiceBean();
 			service.setUserId(userId);
 			service.setName(serviceName);
-			service.setName("likemeter");
+			service.setType("likemeter");
 			Optional<String> optionalUrl = ServiceAction.generateUrl();
 			if (!optionalUrl.isPresent()) {
 				return false;
