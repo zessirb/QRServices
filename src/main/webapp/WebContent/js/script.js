@@ -14,4 +14,17 @@ $(function () {
         })
     ;
 
+    $('.modal .cards .image').dimmer({
+        on: 'hover'
+    });
+    
+    $('.addLikeMeter.modal')
+        .modal('attach events', '.addService.modal .button.likemeter')
+    ;
+    $('.addGuestbook.modal')
+        .modal('attach events', '.addService.modal .button.guestbook')
+    ;
+    $('.addNewsletter.modal')
+        .modal('attach events', '.addService.modal .button.newsletter')
+    ;
 });

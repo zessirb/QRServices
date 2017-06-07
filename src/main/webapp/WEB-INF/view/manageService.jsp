@@ -18,38 +18,41 @@
     <script src="/WebContent/js/script.js"></script>
 </head>
 <body>
-    <div class="ui secondary pointing menu">
-        <a class="item">
-            Home
-        </a>
-        <a class="item">
-            Messages
-        </a>
-        <a class="item active">
-            Friends
-        </a>
-        <div class="right menu">
-            <c:choose>
-                <c:when test="${logged==false}">
-                    <a class="ui item login">
-                        Login
-                    </a>
-                </c:when>
-                <c:otherwise>
-                    <div class="ui item logout">Activator</div>
-                    <div class="ui logout popup">
-                        <div class="header">Custom Header</div>
-                        <div class="ui red basic buttonn">log  out</div>
-                    </div>
-                </c:otherwise>
-            </c:choose>
+<div class="ui secondary pointing menu">
+    <a class="item">
+        Home
+    </a>
+    <a class="item">
+        Messages
+    </a>
+    <a class="item active">
+        Friends
+    </a>
+    <div class="right menu">
+        <c:choose>
+            <c:when test="${logged==false}">
+                <a class="ui item login">
+                    Login
+                </a>
+            </c:when>
+            <c:otherwise>
+                <div class="ui item logout">Activator</div>
+                <div class="ui logout popup">
+                    <div class="header">Custom Header</div>
+                    <div class="ui red basic buttonn">log  out</div>
+                </div>
+            </c:otherwise>
+        </c:choose>
 
-        </div>
     </div>
-    <div class="ui container">
-        <div class="ui link cards">
+</div>
+<div class="ui container">
+    <div class="ui grid four cards">
 
-            <div class="card">
+        <c:forEach items="" var="card">
+            <div class="ui card">
+
+                >>>>>>> feature/view
                 <div class="image">
                     <img src="/images/avatar2/large/matthew.png">
                 </div>
@@ -95,28 +98,13 @@
       </span>
                 </div>
             </div>
-            <div class="card">
-                <div class="image">
-                    <img src="/images/avatar2/large/elyse.png">
-                </div>
-                <div class="content">
-                    <div class="header">Elyse</div>
-                    <div class="meta">
-                        <a>Coworker</a>
-                    </div>
-                    <div class="description">
-                        Elyse is a copywriter working in New York.
-                    </div>
-                </div>
-                <div class="extra content">
-      <span class="right floated">
-        Joined in 2014
-      </span>
-      <span>
-        <i class="user icon"></i>
-        151 Friends
-      </span>
-                </div>
+
+        </c:forEach>
+
+
+        <div class=" ui card">
+            <div class="image">
+                <img src="/WebContent/img/add.png">
             </div>
         </div>
         <div class="card">
@@ -146,85 +134,190 @@
         </div>
     </div>
 
-<div class="ui addService modal">
-    <div class="header">Ajout d'un service</div>
-    <div class="content">
-        <div class="ui four cards">
-            <div class="ui card">
-                <a class="image" href="#">
-                    <img src="/WebContent/img/likeMeter.png">
-                </a>
-                <div class="content">
-                    <a class="header" href="#">Compteur de like</a>
-                    <div class="description">
-                        Suivez les tendences
-                    </div>
-                    <div class="meta">
-                        <a>cool stuff</a>
-                    </div>
-                </div>
-            </div>
-            <div class="ui card">
-                <a class="image" href="#">
-                    <img src="/WebContent/img/reader.png">
-                </a>
-                <div class="content">
-                    <a class="header" href="#">Livre d'or</a>
-                    <div class="description">
-                        Ayez un retour de la part de votre communauté
-                    </div>
-                    <div class="meta">
-                        <a>cool stuff</a>
+
+    <div class="ui addService modal">
+        <div class="header">Ajout d'un service</div>
+        <div class="content">
+            <div class="ui four cards">
+                <div class="ui card">
+                    <a class="image" href="#">
+                        <img src="/WebContent/img/likeMeter.png">
+                    </a>
+                    <div class="content">
+                        <a class="header" href="#">Compteur de like</a>
+                        <div class="description">
+                            Suivez les tendences
+                        </div>
+                        <div class="meta">
+                            <a>cool stuff</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="ui card">
-                <a class="image" href="#">
-                    <img src="/WebContent/img/newsletter.png">
-                </a>
-                <div class="content">
-                    <a class="header" href="#">Inscription a une newletter</a>
-                    <div class="description">
-                        Faites en sorte que vos abboné ne rates aucune news
-                    </div>
-                    <div class="meta">
-                        <a>cool stuff</a>
-                    </div>
-                </div>
-            </div>
-            <div class="ui card">
-                <a class="image" href="#">
-                    <img src="/WebContent/img/pie-chart.png">
-                </a>
-                <div class="content">
-                    <a class="header" href="#">Sondage</a>
-                    <div class="description">
-                        Demander l'avis de votre communauté
-                    </div>
-                    <div class="meta">
-                        <a>cool stuff</a>
+                <div class="ui card">
+                    <a class="image" href="#">
+                        <img src="/WebContent/img/reader.png">
+                    </a>
+                    <div class="content">
+                        <a class="header" href="#">Livre d'or</a>
+                        <div class="description">
+                            Ayez un retour de la part de votre communauté
+                        </div>
+                        <div class="meta">
+                            <a>cool stuff</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+
+        <div class="ui addService modal">
+            <div class="header">Ajout d'un service</div>
+            <div class="content">
+                <div class="ui services four cards">
+
+                    <div class="ui card">
+                        <div class="blurring dimmable image">
+                            <div class="ui dimmer">
+                                <div class="content">
+                                    <div class="center">
+                                        <div class="ui inverted likemeter button">Selectionner</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="/WebContent/img/likeMeter.png" >
+                        </div>
+                        <div class="content">
+                            <a class="header" href="#">Compteur de like</a>
+                            <div class="description">
+                                Suivez les tendences
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui card">
+                        <div class="blurring dimmable image">
+                            <div class="ui dimmer">
+                                <div class="content">
+                                    <div class="center">
+                                        <div class="ui inverted guestbook button">Selectionner</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="/WebContent/img/reader.png" >
+                        </div>
+                        <div class="content">
+                            <a class="header" href="#">Livre d'or</a>
+                            <div class="description">
+                                Ayez un retour de la part de votre communauté
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="ui card">
+                        <div class="blurring dimmable image">
+                            <div class="ui dimmer">
+                                <div class="content">
+                                    <div class="center">
+                                        <div class="ui inverted newsletter button">Selectionner</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="/WebContent/img/text-lines.png" >
+                        </div>
+                        <div class="content">
+                            <a class="header" href="#">Inscription a une newletter</a>
+                            <div class="description">
+                                Faites en sorte que vos abboné ne rates aucune news
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="ui card">
+            <div class="blurring dimmable image">
+                <div class="ui dimmer">
+                    <div class="content">
+                        <div class="center">
+                            <div class="ui inverted button">Selectionner</div>
+                        </div>
+                    </div>
+                </div>
+                <img src="/WebContent/img/pie-chart.png" >
+            </div>
+            <div class="content">
+                <a class="header" href="#">Sondage</a>
+                <div class="description">
+                    Demander l'avis de votre communauté
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<div class="ui addLikeMeter modal">
+    <div class="header">Ajout d'un compteur de like</div>
+    <div class="content">
+        <form class="ui form" method="post" action="/likemetermanager">
+            <div class="field" >
+                <label>Titre</label>
+                <input type="text" name="titre" placeholder="Titre">
+            </div>
+            <div class="field">
+                <label>Description</label>
+                <textarea name="description" rows="2"></textarea>
+            </div>
+            <button type="submit" class="ui teal button">Valider</button>
+        </form>
+
     </div>
 </div>
 
-    <div class="ui addLikeMetter modal">
-        <div class="header">Ajout d'un compteur de like</div>
-        <div class="content">
-            <form class="ui form">
-                <div class="field">
-                    <label>Titre</label>
-                    <input type="text" name="first-name" placeholder="Titre">
-                </div>
-                <div class="field">
-                    <label>Description</label>
-                    <textarea rows="2"></textarea>
-                </div>
-            </form>
+<div class="ui addGuestbook modal">
+    <div class="header">Ajout d'un compteur de like</div>
+    <div class="content">
+        <form class="ui form" method="post" action="/guestbookmanager">
+            <div class="field" >
+                <label>Titre</label>
+                <input type="text" name="titre" placeholder="Titre">
+            </div>
+            <div class="field">
+                <label>Description</label>
+                <textarea name="description" rows="2"></textarea>
+            </div>
+            <button type="submit" class="ui teal button">Valider</button>
+        </form>
 
-           </div>
     </div>
+</div>
+
+<div class="ui addNewsletter modal">
+    <div class="header">Ajout d'un compteur de like</div>
+    <div class="content">
+        <form class="ui form" method="post" action="/newslettermanager">
+            <div class="field" >
+                <label>Titre</label>
+                <input type="text" name="titre" placeholder="Titre">
+            </div>
+            <div class="field">
+                <label>Description</label>
+                <textarea name="description" rows="2"></textarea>
+            </div>
+            <button type="submit" class="ui teal button">Valider</button>
+        </form>
+
+    </div>
+</div>
+
+</div>
+
 </body>
 </html>
