@@ -48,6 +48,7 @@
     </div>
     <div class="ui container">
         <div class="ui link cards">
+
             <div class="card">
                 <div class="image">
                     <img src="/images/avatar2/large/matthew.png">
@@ -118,6 +119,11 @@
                 </div>
             </div>
         </div>
+        <div class="card">
+            <div class="image">
+                <img src="/WebContent/img/add.png">
+            </div>
+        </div>
     </div>
     <div class="ui login modal">
         <div class="header">Header</div>
@@ -143,13 +149,58 @@
 <div class="ui addService modal">
     <div class="header">Ajout d'un service</div>
     <div class="content">
-        <div class="ui cards">
+        <div class="ui four cards">
             <div class="ui card">
                 <a class="image" href="#">
-                    <img src="/webcontent/img/likeMeter.png">
+                    <img src="/WebContent/img/likeMeter.png">
                 </a>
                 <div class="content">
                     <a class="header" href="#">Compteur de like</a>
+                    <div class="description">
+                        Suivez les tendences
+                    </div>
+                    <div class="meta">
+                        <a>cool stuff</a>
+                    </div>
+                </div>
+            </div>
+            <div class="ui card">
+                <a class="image" href="#">
+                    <img src="/WebContent/img/reader.png">
+                </a>
+                <div class="content">
+                    <a class="header" href="#">Livre d'or</a>
+                    <div class="description">
+                        Ayez un retour de la part de votre communauté
+                    </div>
+                    <div class="meta">
+                        <a>cool stuff</a>
+                    </div>
+                </div>
+            </div>
+            <div class="ui card">
+                <a class="image" href="#">
+                    <img src="/WebContent/img/newsletter.png">
+                </a>
+                <div class="content">
+                    <a class="header" href="#">Inscription a une newletter</a>
+                    <div class="description">
+                        Faites en sorte que vos abboné ne rates aucune news
+                    </div>
+                    <div class="meta">
+                        <a>cool stuff</a>
+                    </div>
+                </div>
+            </div>
+            <div class="ui card">
+                <a class="image" href="#">
+                    <img src="/WebContent/img/pie-chart.png">
+                </a>
+                <div class="content">
+                    <a class="header" href="#">Sondage</a>
+                    <div class="description">
+                        Demander l'avis de votre communauté
+                    </div>
                     <div class="meta">
                         <a>cool stuff</a>
                     </div>
