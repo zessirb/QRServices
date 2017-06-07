@@ -75,10 +75,11 @@ public class ServiceAction {
 		if (optionalService.isPresent()) {
 			try {
 				ServiceBean service = optionalService.get();
-				String[] textArray = new String[3];
+				String[] textArray = new String[4];
 				textArray[1] = service.getUrl();
 				textArray[2] = service.getName();
 				textArray[3] = service.getDescription();
+				textArray[4] = service.getType();
 				return Optional.ofNullable(textArray);
 			} catch (Exception e) {
 				return Optional.empty();
