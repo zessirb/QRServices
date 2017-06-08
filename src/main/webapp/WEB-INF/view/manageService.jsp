@@ -205,7 +205,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <img src="/WebContent/img/reader.png" >
+                            <img src="/WebContent/img/guestbook.png" >
                         </div>
                         <div class="content">
                             <a class="header" href="#">Livre d'or</a>
@@ -226,7 +226,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <img src="/WebContent/img/text-lines.png" >
+                            <img src="/WebContent/img/newsletter.png" >
                         </div>
                         <div class="content">
                             <a class="header" href="#">Inscription a une newletter</a>
@@ -249,7 +249,7 @@
                         </div>
                     </div>
                 </div>
-                <img src="/WebContent/img/pie-chart.png" >
+                <img src="/WebContent/img/survey.png" >
             </div>
             <div class="content">
                 <a class="header" href="#">Sondage</a>
