@@ -18,8 +18,6 @@ public class LikeMeterBean implements Serializable {
 	@Column(name="id")
 	private int id;
 	/** Identifiant du service générique associé **/
-
-
 	@Column(name="serviceId")
 	private int serviceId;
 	/** Quantité de Like **/

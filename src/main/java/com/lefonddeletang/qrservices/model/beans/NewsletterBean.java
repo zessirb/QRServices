@@ -25,7 +25,6 @@ public class NewsletterBean implements Serializable {
 	private int id;
 	/** Identifiant du service générique associé **/
 	@Column(name="serviceId")
-
 	private int serviceId;
 	/** Concaténation des emails inscrits **/
 	@Column(name="emails")
