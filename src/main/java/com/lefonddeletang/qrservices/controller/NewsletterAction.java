@@ -2,6 +2,7 @@ package com.lefonddeletang.qrservices.controller;
 
 import java.util.Optional;
 
+import com.lefonddeletang.qrservices.model.beans.LikeMeterBean;
 import com.lefonddeletang.qrservices.model.beans.NewsletterBean;
 import com.lefonddeletang.qrservices.model.beans.ServiceBean;
 import com.lefonddeletang.qrservices.model.dao.NewsletterDao;
@@ -24,6 +25,24 @@ public class NewsletterAction {
 			String emailString = newsletter.getEmails();
 			String emailArray[] = emailString.split(";");
 			return Optional.ofNullable(emailArray);
+		} else {
+			return Optional.empty();
+		}
+	}
+	
+	/**
+	 * Renvoie un booléen attestant la présence d'un email d'un utilisateur pour une newsletter
+	 *
+	 * @param serviceId Id du service de la newsletter
+	 * @param email Email à inscrire
+	 * @return Booléen optionnel (true : email loggé, false : email non loggé, empty : erreur lors de la récupération de la newsletter)
+	 */
+	static public Optional<Boolean> isEmailLogged(int serviceId, String email) {
+		Optional<NewsletterBean> optionalNewsletter = newsletterDao.getNewsletterByService(serviceId);
+		if (optionalNewsletter.isPresent()) {
+			NewsletterBean newsletter = optionalNewsletter.get();
+			String emailList = newsletter.getEmails() == null ? "" : newsletter.getEmails();
+			return Optional.ofNullable(emailList.contains(email));
 		} else {
 			return Optional.empty();
 		}
