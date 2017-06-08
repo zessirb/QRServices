@@ -100,4 +100,22 @@ public class GuestbookAction {
 			return false;
 		}
 	}
+	
+	/**
+	 * Supprime un livre d'or et le service associé
+	 * 
+	 * @param serviceId Id du service associé au livre d'or
+	 * @return Boléen attestant que le sondage existait
+	 */
+	static public boolean deleteGuestbook(int serviceId) {
+		Optional<GuestbookBean> optionalGuestbook = guestbookDao.getGuestbookByService(serviceId);
+		Optional<ServiceBean> optionalService = serviceDao.getService(serviceId);
+		if (optionalGuestbook.isPresent() && optionalService.isPresent()) {
+			guestbookDao.deleteGuestbook(optionalGuestbook.get());
+			serviceDao.deleteService(optionalService.get());
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
