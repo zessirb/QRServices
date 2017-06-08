@@ -6,6 +6,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -39,9 +40,19 @@ public class ServiceFilter implements  javax.servlet.Filter  {
             request.setAttribute("url",urlpart);
             request.setAttribute("id", id);
 
-            String newURI= "/service/"+type+"/"+urlpart;
-            request.getRequestDispatcher(newURI).forward(request, response);
-           // filterChain.doFilter(request,response);
+
+            HttpSession session = request.getSession();
+            if (session.getAttribute("credentials")!=null){
+                int userid =(int) session.getAttribute("credentials");
+                String newURI = "/detail/" + type + "/" + urlpart;
+                request.getRequestDispatcher(newURI).forward(request, response);
+            } else {
+
+
+                String newURI = "/service/" + type + "/" + urlpart;
+                request.getRequestDispatcher(newURI).forward(request, response);
+            }
+
         }
     }
 

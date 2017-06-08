@@ -1,6 +1,5 @@
-package com.lefonddeletang.qrservices.view.servlet;
+package com.lefonddeletang.qrservices.view.servlet.manager;
 
-import com.lefonddeletang.qrservices.controller.GuestbookAction;
 import com.lefonddeletang.qrservices.controller.LikeMeterAction;
 
 import javax.servlet.ServletException;
@@ -13,12 +12,12 @@ import java.io.IOException;
 /**
  * Created by hugo on 07/06/2017.
  */
-@WebServlet(name="GuestbookManager", urlPatterns="/guestbookmanager")
-public class GuestbookManagerServlet extends HttpServlet {
+@WebServlet(name="LikeMeterManager", urlPatterns="/likemetermanager")
+public class LikeMeterManagerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String titre = req.getParameter("titre");
         String description = req.getParameter("description");
-        GuestbookAction.createGuestbook(1,titre,description);
+        LikeMeterAction.createLikeMeter(1,titre,description);
     }
 }

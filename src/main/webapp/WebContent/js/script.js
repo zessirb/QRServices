@@ -6,9 +6,17 @@ $(function () {
 
     $(".ui.login.modal")
         .modal('setting', 'closable', false).modal("show");
-    $(".ui.item.login").click(function () {
-        $(".ui.login.modal").modal("show")
+    $("a.addservice").click(function () {
+        $(".ui.addservice.modal").modal("show")
     })
+
+
+
+
+
+
+
+
 
     $('.ui.item.logout')
         .popup({

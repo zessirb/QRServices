@@ -1,4 +1,4 @@
-package com.lefonddeletang.qrservices.view.servlet;
+package com.lefonddeletang.qrservices.view.servlet.clients;
 
 import com.lefonddeletang.qrservices.controller.NewsletterAction;
 

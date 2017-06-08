@@ -19,7 +19,9 @@
 </head>
 <body>
 <div class="ui secondary pointing menu">
-
+    <div class="header item">
+        QRServices
+    </div>
     <div class="right menu">
         <c:choose>
             <c:when test="${logged==false}">
@@ -40,21 +42,26 @@
 </div>
 <div class="ui container">
     <div class="ui grid four cards">
-
-        <c:forEach items="" var="card">
+<c:choose>
+    <c:when test="${logged}">
+        <c:forEach items="${services}" var="service">
             <div class="ui card">
                 <div class="image">
-                    <img src="/images/avatar2/large/matthew.png">
+                    <img src="/WebContent/img/${service[3]}.png">
                 </div>
                 <div class="content">
-                    <div class="header">Matt Giampietro</div>
+                    <div class="header">${service[1]}</div>
                     <div class="meta">
-                        <a>Friends</a>
+                        <a>${service[3]}</a>
                     </div>
                     <div class="description">
-                        Matthew is an interior designer living in New York.
+                            ${$service[2]}
                     </div>
                 </div>
+                <a href="/services/${service[0]}" class="ui bottom attached button">
+                    <i class="add icon"></i>
+                    Details
+                </a>
 
             </div>
 
@@ -65,10 +72,14 @@
 
         <div class="card">
             <div class="image">
-                <img src="/WebContent/img/add.png">
+                <a href="#" class="addservice"><img src="/WebContent/img/add.png"></a>
             </div>
         </div>
+
+        </c:when>
+    </c:choose>
     </div>
+
 
     <div class="ui large ${logged ? "":"login"} modal">
         <div class="header">Header</div>
@@ -157,26 +168,27 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
 
-    <div class="ui card">
-        <div class="blurring dimmable image">
-            <div class="ui dimmer">
-                <div class="content">
-                    <div class="center">
-                        <div class="ui inverted button">Selectionner</div>
+
+                <div class="ui card">
+                    <div class="blurring dimmable image">
+                        <div class="ui dimmer">
+                            <div class="content">
+                                <div class="center">
+                                    <div class="ui inverted button">Selectionner</div>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="/WebContent/img/survey.png" >
+                    </div>
+                    <div class="content">
+                        <a class="header" href="#">Sondage</a>
+                        <div class="description">
+                            Demander l'avis de votre communauté
+                        </div>
                     </div>
                 </div>
-            </div>
-            <img src="/WebContent/img/survey.png" >
-        </div>
-        <div class="content">
-            <a class="header" href="#">Sondage</a>
-            <div class="description">
-                Demander l'avis de votre communauté
             </div>
         </div>
     </div>

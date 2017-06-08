@@ -32,10 +32,11 @@ public class ManagerServlet extends HttpServlet {
         if( session.getAttribute("credentials") != null){
            int userid =(int) session.getAttribute("credentials");
            logged = true;
+            request.setAttribute("services",ServiceAction.getServicesTextsByUser(userid).get());
         }
 
 
-        request.setAttribute("services",new ArrayList<String[]>());
+
         request.setAttribute("logged",logged);
         this.getServletContext().getRequestDispatcher("/WEB-INF/view/" + "manageService" +".jsp").forward(request, response);
     }
