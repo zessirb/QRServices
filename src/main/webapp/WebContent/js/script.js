@@ -3,6 +3,9 @@
  */
 
 $(function () {
+
+    $(".ui.login.modal")
+        .modal('setting', 'closable', false).modal("show");
     $(".ui.item.login").click(function () {
         $(".ui.login.modal").modal("show")
     })

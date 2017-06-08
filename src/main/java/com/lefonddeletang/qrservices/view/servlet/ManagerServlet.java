@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet de gestion des services d'un utilisateur depuis un manager.
@@ -26,11 +27,16 @@ public class ManagerServlet extends HttpServlet {
     	response.setContentType("text/html");
         response.setCharacterEncoding( "UTF-8" );
 
+        boolean logged = false;
+        HttpSession session = request.getSession();
+        if( session.getAttribute("credentials") != null){
+           int userid =(int) session.getAttribute("credentials");
+           logged = true;
+        }
 
-        boolean logged= true;
 
         request.setAttribute("services",new ArrayList<String[]>());
-
+        request.setAttribute("logged",logged);
         this.getServletContext().getRequestDispatcher("/WEB-INF/view/" + "manageService" +".jsp").forward(request, response);
     }
 }
