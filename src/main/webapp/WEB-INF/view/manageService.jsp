@@ -127,7 +127,7 @@
                                 </div>
                             </div>
                         </div>
-                        <img src="/WebContent/img/reader.png" >
+                        <img src="/WebContent/img/guestbook.png" >
                     </div>
                     <div class="content">
                         <a class="header" href="#">Livre d'or</a>
@@ -148,7 +148,7 @@
                                 </div>
                             </div>
                         </div>
-                        <img src="/WebContent/img/text-lines.png" >
+                        <img src="/WebContent/img/newsletter.png" >
                     </div>
                     <div class="content">
                         <a class="header" href="#">Inscription a une newletter</a>
@@ -157,83 +157,87 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="ui card">
-                    <div class="blurring dimmable image">
-                        <div class="ui dimmer">
-                            <div class="content">
-                                <div class="center">
-                                    <div class="ui inverted button">Selectionner</div>
-                                </div>
-                            </div>
-                        </div>
-                        <img src="/WebContent/img/pie-chart.png" >
-                    </div>
-                    <div class="content">
-                        <a class="header" href="#">Sondage</a>
-                        <div class="description">
-                            Demander l'avis de votre communauté
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
 
-    <div class="ui addLikeMeter modal">
-        <div class="header">Ajout d'un compteur de like</div>
-        <div class="content">
-            <form class="ui form" method="post" action="/likemetermanager">
-                <div class="field" >
-                    <label>Titre</label>
-                    <input type="text" name="titre" placeholder="Titre">
-                </div>
-                <div class="field">
-                    <label>Description</label>
-                    <textarea name="description" rows="2"></textarea>
-                </div>
-                <button type="submit" class="ui teal button">Valider</button>
-            </form>
 
+    <div class="ui card">
+        <div class="blurring dimmable image">
+            <div class="ui dimmer">
+                <div class="content">
+                    <div class="center">
+                        <div class="ui inverted button">Selectionner</div>
+                    </div>
+                </div>
+            </div>
+            <img src="/WebContent/img/survey.png" >
+        </div>
+        <div class="content">
+            <a class="header" href="#">Sondage</a>
+            <div class="description">
+                Demander l'avis de votre communauté
+            </div>
         </div>
     </div>
 
-    <div class="ui addGuestbook modal">
-        <div class="header">Ajout d'un compteur de like</div>
-        <div class="content">
-            <form class="ui form" method="post" action="/guestbookmanager">
-                <div class="field" >
-                    <label>Titre</label>
-                    <input type="text" name="titre" placeholder="Titre">
-                </div>
-                <div class="field">
-                    <label>Description</label>
-                    <textarea name="description" rows="2"></textarea>
-                </div>
-                <button type="submit" class="ui teal button">Valider</button>
-            </form>
+</div>
+</div>
+</div>
 
-        </div>
+<div class="ui addLikeMeter modal">
+    <div class="header">Ajout d'un compteur de like</div>
+    <div class="content">
+        <form class="ui form" method="post" action="/likemetermanager">
+            <div class="field" >
+                <label>Titre</label>
+                <input type="text" name="titre" placeholder="Titre">
+            </div>
+            <div class="field">
+                <label>Description</label>
+                <textarea name="description" rows="2"></textarea>
+            </div>
+            <button type="submit" class="ui teal button">Valider</button>
+        </form>
+
     </div>
+</div>
 
-    <div class="ui addNewsletter modal">
-        <div class="header">Ajout d'un compteur de like</div>
-        <div class="content">
-            <form class="ui form" method="post" action="/newslettermanager">
-                <div class="field" >
-                    <label>Titre</label>
-                    <input type="text" name="titre" placeholder="Titre">
-                </div>
-                <div class="field">
-                    <label>Description</label>
-                    <textarea name="description" rows="2"></textarea>
-                </div>
-                <button type="submit" class="ui teal button">Valider</button>
-            </form>
+<div class="ui addGuestbook modal">
+    <div class="header">Ajout d'un compteur de like</div>
+    <div class="content">
+        <form class="ui form" method="post" action="/guestbookmanager">
+            <div class="field" >
+                <label>Titre</label>
+                <input type="text" name="titre" placeholder="Titre">
+            </div>
+            <div class="field">
+                <label>Description</label>
+                <textarea name="description" rows="2"></textarea>
+            </div>
+            <button type="submit" class="ui teal button">Valider</button>
+        </form>
 
-        </div>
     </div>
+</div>
+
+<div class="ui addNewsletter modal">
+    <div class="header">Ajout d'un compteur de like</div>
+    <div class="content">
+        <form class="ui form" method="post" action="/newslettermanager">
+            <div class="field" >
+                <label>Titre</label>
+                <input type="text" name="titre" placeholder="Titre">
+            </div>
+            <div class="field">
+                <label>Description</label>
+                <textarea name="description" rows="2"></textarea>
+            </div>
+            <button type="submit" class="ui teal button">Valider</button>
+        </form>
+
+    </div>
+</div>
 
 </div>
 

@@ -1,5 +1,6 @@
 package com.lefonddeletang.qrservices.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -76,11 +77,40 @@ public class ServiceAction {
 			try {
 				ServiceBean service = optionalService.get();
 				String[] textArray = new String[4];
-				textArray[1] = service.getUrl();
-				textArray[2] = service.getName();
-				textArray[3] = service.getDescription();
-				textArray[4] = service.getType();
+				textArray[0] = service.getUrl();
+				textArray[1] = service.getName();
+				textArray[2] = service.getDescription();
+				textArray[3] = service.getType();
 				return Optional.ofNullable(textArray);
+			} catch (Exception e) {
+				return Optional.empty();
+			}
+		} else {
+			return Optional.empty();
+		}
+	}
+	
+	/**
+	 * Renvoie une liste contenant les tableaux des textes des services pour un user
+	 * 
+	 * @param userId Identifiant du user
+	 * @return Liste (optionnelle) contenant les tableaux des textes relatifs aux services
+	 */
+	static public Optional<List<String[]>> getServicesTextsByUser(int userId) {
+		Optional<List<ServiceBean>> optionalServices = serviceDao.getServicesByUser(userId);
+		if (optionalServices.isPresent()) {
+			try {
+				List<ServiceBean> services = optionalServices.get();
+				List<String[]> textList = new ArrayList<String[]>();
+				for(ServiceBean service : services) {
+					String[] textArray = new String[4];
+					textArray[0] = service.getUrl();
+					textArray[1] = service.getName();
+					textArray[2] = service.getDescription();
+					textArray[3] = service.getType();
+					textList.add(textArray);
+				}
+				return Optional.ofNullable(textList);
 			} catch (Exception e) {
 				return Optional.empty();
 			}
