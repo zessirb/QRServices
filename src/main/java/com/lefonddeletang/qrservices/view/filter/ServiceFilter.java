@@ -44,8 +44,18 @@ public class ServiceFilter implements  javax.servlet.Filter  {
             HttpSession session = request.getSession();
             if (session.getAttribute("credentials")!=null){
                 int userid =(int) session.getAttribute("credentials");
-                String newURI = "/detail/" + type + "/" + urlpart;
-                request.getRequestDispatcher(newURI).forward(request, response);
+
+                if(ServiceAction.getServiceUserId(id).get()==userid){
+                    String newURI = "/detail/" + type + "/" + urlpart;
+
+                    request.getRequestDispatcher(newURI).forward(request, response);
+                }else{
+
+                    String newURI = "/service/" + type + "/" + urlpart;
+                    request.getRequestDispatcher(newURI).forward(request, response);
+                }
+
+
             } else {
 
 

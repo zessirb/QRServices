@@ -19,6 +19,9 @@
 </head>
 <body>
 <div class="ui secondary pointing menu">
+    <div class="item">
+        <img src="/WebContent/img/icon.png">
+    </div>
     <div class="header item">
         QRServices
     </div>
@@ -119,7 +122,7 @@
                                 </div>
                             </div>
                         </div>
-                        <img src="/WebContent/img/likeMeter.png" >
+                        <img src="/WebContent/img/likemeter.png" >
                     </div>
                     <div class="content">
                         <a class="header" href="#">Compteur de like</a>
