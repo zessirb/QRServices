@@ -33,6 +33,10 @@ Une fois celui-ci prêt, y déployer l'artefact war (le placer dans le dossier w
 
 ## Structure du projet
 
+### Stack du projet
+
+L'application web est une application Java EE configurée sous Maven et prévue pour un serveur Tomcat 8. La partie front repose sur les servlet ainsi que JSP ; la couche de persistance utilise Hibernate en tant qu'ORM, et la base est en MySQL.
+
 ### Architecture de l'application
 
 Le projet utilise une architecture en trois couches qui correspondent à la présentation, au traitement et à l'accès des données. Chacune de ces couches est localisée dans un package.
