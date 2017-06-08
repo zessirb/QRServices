@@ -41,6 +41,27 @@ public class ServiceAction {
 	}
 	
 	/**
+	 * Renvoie l'id du User ayant créé un service
+	 * 
+	 * @param id Identifiant du service
+	 * @return Id (optionnel) du User
+	 */
+	static public Optional<Integer> getServiceUserId(int id) {
+		Optional<ServiceBean> optionalService = serviceDao.getService(id);
+		if (optionalService.isPresent()) {
+			try {
+				ServiceBean service = optionalService.get();
+				int userId = service.getUserId();
+				return Optional.ofNullable(userId);
+			} catch (Exception e) {
+				return Optional.empty();
+			}
+		} else {
+			return Optional.empty();
+		}
+	}
+	
+	/**
 	 * Renvoie le type d'un service à partir de son id, si le type est reconnu
 	 * 
 	 * @param id Identifiant du service
