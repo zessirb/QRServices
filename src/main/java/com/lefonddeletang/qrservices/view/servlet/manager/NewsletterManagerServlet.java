@@ -12,22 +12,25 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * Created by hugo on 07/06/2017.
+ * Servlet permetaant l'accès à la gestion des newsletter
+ * la method doPost permet d'ajouter un service newsletter.
  */
-@WebServlet(name="LikeMeterManager", urlPatterns="/newslettermanager")
+@WebServlet(name="newsLetterManager", urlPatterns="/newslettermanager")
 public class NewsletterManagerServlet extends HttpServlet {
+    /**
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       HttpSession session = req.getSession();
-       int id = (int) session.getAttribute("credentials");
+    protected void doPost(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
+        final HttpSession session = request.getSession();
+        final int id = (int) session.getAttribute("credentials");
+        final String titre = request.getParameter("titre");
 
-
-        String titre = req.getParameter("titre");
-
-
-
-        String description = req.getParameter("description");
+        String description = request.getParameter("description");
         NewsletterAction.createNewsletter(id,titre,description);
-        resp.sendRedirect("/manage");
+        response.sendRedirect("/manage");
     }
 }

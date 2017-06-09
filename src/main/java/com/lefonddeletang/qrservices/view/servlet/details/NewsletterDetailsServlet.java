@@ -9,22 +9,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Optional;
 
 /**
- * Created by hugo on 08/06/2017.
+ * Ce servlet permet d'acceder au details d'une newsletter par son proprietaire
  */
 @WebServlet(name="NewsletterDetails", urlPatterns = "/detail/newsletter/*")
 public class NewsletterDetailsServlet extends HttpServlet {
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = (Integer)req.getAttribute("id");
+    protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
+        final int id = (Integer)request.getAttribute("id");
+        final String[] info = ServiceAction.getServiceTexts(id).get();
 
-        req.setAttribute("url",(String) req.getAttribute("url"));
-
-
-        req.setAttribute("type","newsletter");
-        req.setAttribute("mails", NewsletterAction.getNewsletterEmails(id).get());
-
-        getServletContext().getRequestDispatcher("/WEB-INF/view/" + "details" +".jsp").forward(req, resp);
+        request.setAttribute("url",(String) request.getAttribute("url"));
+        request.setAttribute("service",info);
+        request.setAttribute("type","newsletter");
+        Optional<String[]> mail = NewsletterAction.getNewsletterEmails(id);
+        if(mail.isPresent()){
+            request.setAttribute("mails",mail.get());
+        }
+        getServletContext().getRequestDispatcher("/WEB-INF/view/" + "details" +".jsp").forward(request, response);
     }
 }

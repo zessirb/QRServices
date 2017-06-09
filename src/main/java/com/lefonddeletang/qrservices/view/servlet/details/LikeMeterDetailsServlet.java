@@ -11,21 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by hugo on 08/06/2017.
+ * Ce servlet permet d'acceder au details d'un likemeter par son proprietaire
  */
 @WebServlet(name="likeMeterDetails", urlPatterns = "/detail/likemeter/*")
 public class LikeMeterDetailsServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = (Integer)req.getAttribute("id");
-        String[] info = ServiceAction.getServiceTexts(id).get();
-        req.setAttribute("url",(String) req.getAttribute("url"));
-        req.setAttribute("service",info);
+    protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
+        final int id = (Integer)request.getAttribute("id");
+        final String[] info = ServiceAction.getServiceTexts(id).get();
 
-        req.setAttribute("type","likemeter");
+        request.setAttribute("url",(String) request.getAttribute("url"));
+        request.setAttribute("service",info);
+        request.setAttribute("type","likemeter");
+        request.setAttribute("count",LikeMeterAction.getLikeCount(id).get());
 
-        req.setAttribute("count",LikeMeterAction.getLikeCount(id).get());
-
-        getServletContext().getRequestDispatcher("/WEB-INF/view/" + "details" +".jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/WEB-INF/view/" + "details" +".jsp").forward(request, response);
     }
 }

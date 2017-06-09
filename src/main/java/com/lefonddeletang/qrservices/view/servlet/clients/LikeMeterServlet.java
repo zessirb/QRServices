@@ -13,33 +13,45 @@ import java.io.PrintWriter;
 import java.util.Optional;
 
 /**
- * Created by hugo on 02/06/2017.
+ * Servlet de consomation du likemeter par l'utilisateur final
  */
 @WebServlet(name="LikeMeterService", urlPatterns="/service/likemeter/*")
 public class LikeMeterServlet extends HttpServlet {
-
-    private final String PATH_VIEW = "/WEB-INF/view/";
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = (Integer)req.getAttribute("id");
+    protected void doGet(final HttpServletRequest request,final HttpServletResponse response) throws ServletException, IOException {
+        final int id = (Integer)request.getAttribute("id");
+        final Optional<Integer> countOptional =LikeMeterAction.getLikeCount(id);
+        final Optional<Boolean> likedOptional = LikeMeterAction.isUserLogged(id,request.getRemoteAddr());
+        final int count = countOptional.isPresent()? countOptional.get() : 0;
+        final boolean liked = likedOptional.isPresent()? likedOptional.get():false;
 
-        Optional<Integer> countOptional =LikeMeterAction.getLikeCount(id);
-        Optional<Boolean> likedOptional = LikeMeterAction.isUserLogged(id,req.getRemoteAddr());
-        int count = countOptional.isPresent()? countOptional.get() : 0;
-        boolean liked = likedOptional.isPresent()? likedOptional.get():false;
-        req.setAttribute("liked",liked);
-        req.setAttribute("count",count);
-        req.setAttribute("url",(String) req.getAttribute("url"));
-        this.getServletContext().getRequestDispatcher("/WEB-INF/view/" + "likeMeter" +".jsp").forward(req, resp);
-
+        request.setAttribute("liked",liked);
+        request.setAttribute("count",count);
+        request.setAttribute("url",(String) request.getAttribute("url"));
+        this.getServletContext().getRequestDispatcher("/WEB-INF/view/" + "likeMeter" +".jsp").forward(request, response);
     }
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
-        String ip = req.getRemoteAddr();
-        int id = (Integer)req.getAttribute("id");
-        LikeMeterAction.addLike(id,ip);
 
-        resp.sendRedirect("/services/"+req.getAttribute("url"));
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+        final String ip = request.getRemoteAddr();
+        final int id = (Integer)request.getAttribute("id");
+
+        LikeMeterAction.addLike(id,ip);
+        response.sendRedirect("/services/"+request.getAttribute("url"));
     }
 
 

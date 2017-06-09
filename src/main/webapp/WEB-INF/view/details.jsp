@@ -44,7 +44,10 @@
                         <div class="ui purple horizontal label">Description</div>
                         ${service[2]}
                     </a>
-
+                <form action="/servicemanager" method="delete">
+                    <input type="hidden" name="url" value="${url}">
+                    <button type="submit" class="ui button red">supprimer</button>
+                </form>
                 </div>
             </div>
         </div>

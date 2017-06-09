@@ -12,33 +12,50 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Optional;
 
 /**
- * Created by hugo on 06/06/2017.
+ * Servlet d'affichage des QRCode
  */
 @WebServlet(name="qrcode", urlPatterns="/qrcode/*")
 public class QRCodeServlet extends HttpServlet {
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
 
-        String[] url = req.getRequestURI().split("/");
-        String urlpart = url[url.length-1];
+        final String[] url = request.getRequestURI().split("/");
+        final String urlpart = url[url.length-1];
         if (urlpart == null || urlpart== "") {
-            resp.sendError(400);
+            response.sendError(400);
         }
 
 
 
-        ByteArrayOutputStream out = BarcodeHandler.generateBarcodeFromUrl(req.getServerName()+":"+req.getServerPort()+"/services/"+urlpart).get();
+        final Optional<ByteArrayOutputStream> qrCodeBytesOpt = BarcodeHandler.generateBarcodeFromUrl(request.getServerName()+":"+request.getServerPort()+"/services/"+urlpart).get();
 
-        resp.setContentType("image/png");
-        resp.setContentLength(out.size());
+        if(qrCodeBytesOpt.isPresent()) {
 
-        OutputStream outStream = resp.getOutputStream();
+            ByteArrayOutputStream qrCodeBytes = qrCodeBytesOpt.get();
 
-        outStream.write(out.toByteArray());
+            response.setContentType("image/png");
+            response.setContentLength(qrCodeBytes.size());
 
-        outStream.flush();
-        outStream.close();
+            OutputStream outStream = response.getOutputStream();
+
+            outStream.write(qrCodeBytes.toByteArray());
+
+            outStream.flush();
+            outStream.close();
+        }
+        else{
+            response.sendError(404);
+        }
+
     }
 }

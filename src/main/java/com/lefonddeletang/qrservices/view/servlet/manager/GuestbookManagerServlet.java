@@ -12,19 +12,25 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * Created by hugo on 07/06/2017.
+ * Servlet permetaant l'accès à la gestion des guestbook
+ * la method doPost permet d'ajouter un service guestbook.
  */
 @WebServlet(name="GuestbookManager", urlPatterns="/guestbookmanager")
 public class GuestbookManagerServlet extends HttpServlet {
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        int id = (int) session.getAttribute("credentials");
-
-
-        String titre = req.getParameter("titre");
-        String description = req.getParameter("description");
+    protected void doPost(final HttpServletRequest request, final  HttpServletResponse response) throws ServletException, IOException {
+        final HttpSession session = request.getSession();
+        final int id = (int) session.getAttribute("credentials");
+        final String titre = request.getParameter("titre");
+        final String description = request.getParameter("description");
         GuestbookAction.createGuestbook(id,titre,description);
-        resp.sendRedirect("/manage");
+        response.sendRedirect("/manage");
     }
 }

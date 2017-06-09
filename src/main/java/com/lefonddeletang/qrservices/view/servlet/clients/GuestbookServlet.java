@@ -12,30 +12,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by hugo on 06/06/2017.
+ * Servlet de consomation du guestbook par l'utilisateur final
  */
 @WebServlet(name="GuestbookService", urlPatterns="/service/guestbook/*")
 public class GuestbookServlet extends HttpServlet {
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet( final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
 
-        int id = (Integer)req.getAttribute("id");
+        final int id = (Integer)request.getAttribute("id");
 
 
         List<String[]> comments = GuestbookAction.getGuestbookCommentsbyServiceId(id).isPresent()?
                 GuestbookAction.getGuestbookCommentsbyServiceId(id).get() : new ArrayList<String[]>();
-        req.setAttribute("url",(String) req.getAttribute("url"));
-        req.setAttribute("comments",comments);
-        this.getServletContext().getRequestDispatcher("/WEB-INF/view/" + "guestbook" +".jsp").forward(req, resp);
+        request.setAttribute("url",(String) request.getAttribute("url"));
+        request.setAttribute("comments",comments);
+        this.getServletContext().getRequestDispatcher("/WEB-INF/view/" + "guestbook" +".jsp").forward(request, response);
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = (Integer)req.getAttribute("id");
-        String title = req.getParameter("title");
-        String message= req.getParameter("message");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = (Integer)request.getAttribute("id");
+        String title = request.getParameter("title");
+        String message= request.getParameter("message");
         GuestbookAction.createComment(id,title,message,"Guest");
 
-        resp.sendRedirect("/services/"+req.getAttribute("url"));
+        response.sendRedirect("/services/"+request.getAttribute("url"));
     }
 }

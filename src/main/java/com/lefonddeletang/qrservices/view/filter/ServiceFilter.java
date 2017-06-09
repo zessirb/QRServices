@@ -22,7 +22,6 @@ public class ServiceFilter implements  javax.servlet.Filter  {
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-
         String[] url = request.getRequestURI().split("/");
         String urlpart = url[url.length-1];
         if (urlpart == null || urlpart== "") {
@@ -30,43 +29,29 @@ public class ServiceFilter implements  javax.servlet.Filter  {
         } else if (!ServiceAction.getServiceIdFromUrl(urlpart).isPresent()){
             response.sendError(404);
         } else {
-
             int id = ServiceAction.getServiceIdFromUrl(urlpart).get();
             if(!ServiceAction.getServiceType(id).isPresent()){
                 response.sendError(404);
             }
-
             String type =  ServiceAction.getServiceType(id).get();
             request.setAttribute("url",urlpart);
             request.setAttribute("id", id);
-
-
             HttpSession session = request.getSession();
-            if (session.getAttribute("credentials")!=null){
+            if (session.getAttribute("credentials")!=null) {
                 int userid =(int) session.getAttribute("credentials");
-
-                if(ServiceAction.getServiceUserId(id).get()==userid){
+                if (ServiceAction.getServiceUserId(id).get() == userid) {
                     String newURI = "/detail/" + type + "/" + urlpart;
-
                     request.getRequestDispatcher(newURI).forward(request, response);
-                }else{
-
+                } else {
                     String newURI = "/service/" + type + "/" + urlpart;
                     request.getRequestDispatcher(newURI).forward(request, response);
                 }
-
-
             } else {
-
-
                 String newURI = "/service/" + type + "/" + urlpart;
                 request.getRequestDispatcher(newURI).forward(request, response);
             }
-
         }
     }
-
-
     public void destroy() {
 
     }

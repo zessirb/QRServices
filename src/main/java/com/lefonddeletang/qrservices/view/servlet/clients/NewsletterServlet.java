@@ -10,33 +10,42 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by hugo on 06/06/2017.
+ * Servlet de consomation d'une newsletter par l'utilisateur final
  */
 @WebServlet(name="NewsLetter", urlPatterns="/service/newsletter/*")
 public class NewsletterServlet extends HttpServlet {
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        req.setAttribute("url", req.getAttribute("url"));
-
-        this.getServletContext().getRequestDispatcher("/WEB-INF/view/" + "newsletter" +".jsp").forward(req, resp);
+    protected void doGet(final HttpServletRequest request,final HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("url", request.getAttribute("url"));
+        this.getServletContext().getRequestDispatcher("/WEB-INF/view/" + "newsletter" +".jsp").forward(request, response);
     }
-
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String mail = req.getParameter("mail");
-        int id = (Integer)req.getAttribute("id");
-        if(!mail.contains("@")){
-            req.setAttribute("error",true);
-            this.getServletContext().getRequestDispatcher("/WEB-INF/view/" + "newsletter" +".jsp").forward(req, resp);
-        }else{
+    protected void doPost(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
+        final String mail = request.getParameter("mail");
+        final int id = (Integer)request.getAttribute("id");
+        if (!mail.contains("@")) {
+            request.setAttribute("error",true);
+            this.getServletContext().getRequestDispatcher("/WEB-INF/view/" + "newsletter" +".jsp").forward(request, response);
+        } else {
 
-           if(NewsletterAction.addEmail(id,mail).get()){
-               req.setAttribute("error",true);
-               this.getServletContext().getRequestDispatcher("/WEB-INF/view/" + "newsletter" +".jsp").forward(req, resp);
-           }else{
-
-           }
+            if (!NewsletterAction.addEmail(id,mail).get()) {
+                request.setAttribute("error",true);
+                this.getServletContext().getRequestDispatcher("/WEB-INF/view/" + "newsletter" +".jsp").forward(request, response);
+            }
         }
     }
 }

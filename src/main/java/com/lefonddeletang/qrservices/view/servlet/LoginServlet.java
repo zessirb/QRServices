@@ -13,34 +13,40 @@ import java.io.IOException;
 import java.util.Optional;
 
 /**
- * Created by hugo on 08/06/2017.
+ * Servlet permettetant d'acceder a l'identification des utilisateurs créateur de service.
+ * la methode post permet de s'identifier
+ * la methode get permet de se deconnecter
  */
 @WebServlet(name="login", urlPatterns="/login")
 public class LoginServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            String url = req.getParameter("url");
-            String username= req.getParameter("username");
-            String password = req.getParameter("password");
-
-
-            Optional<Integer> userid = UserAction.getUserIdFromCredentials(username,password);
+    protected void doPost( final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
+        final String url = request.getParameter("url");
+        final String username= request.getParameter("username");
+        final String password = request.getParameter("password");
+        final Optional<Integer> userid = UserAction.getUserIdFromCredentials(username,password);
 
         if(userid.isPresent()){
-            HttpSession session = req.getSession();
+            HttpSession session = request.getSession();
             session.setAttribute("credentials",userid.get());
         }
-        resp.sendRedirect(url);
-
+        response.sendRedirect(url);
     }
-
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String url= req.getParameter("url");
-        HttpSession session = req.getSession();
+    protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
+        final String url= request.getParameter("url");
+        final HttpSession session = request.getSession();
+
         if(session.getAttribute("credentials")!=null){
             session.removeAttribute("credentials");
         }
-        resp.sendRedirect(url);
+        response.sendRedirect(url);
     }
 }

@@ -21,22 +21,20 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name="Manager", urlPatterns="/manage")
 public class ManagerServlet extends HttpServlet {
-	private static final long serialVersionUID = 8802864716415469670L;
+    private static final long serialVersionUID = 8802864716415469670L;
 
-	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
-    	response.setContentType("text/html");
+    public void doGet(final HttpServletRequest request,final HttpServletResponse response ) throws ServletException, IOException{
+        response.setContentType("text/html");
         response.setCharacterEncoding( "UTF-8" );
 
         boolean logged = false;
         HttpSession session = request.getSession();
-        if( session.getAttribute("credentials") != null){
-           int userid =(int) session.getAttribute("credentials");
-           logged = true;
+
+        if (session.getAttribute("credentials") != null) {
+            int userid =(int) session.getAttribute("credentials");
+            logged = true;
             request.setAttribute("services",ServiceAction.getServicesTextsByUser(userid).get());
         }
-
-
-
         request.setAttribute("logged",logged);
         this.getServletContext().getRequestDispatcher("/WEB-INF/view/" + "manageService" +".jsp").forward(request, response);
     }

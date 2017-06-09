@@ -23,8 +23,12 @@ public class NewsletterAction {
 		if (optionalNewsletter.isPresent()) {
 			NewsletterBean newsletter = optionalNewsletter.get();
 			String emailString = newsletter.getEmails();
-			String emailArray[] = emailString.split(";");
-			return Optional.ofNullable(emailArray);
+			if(emailString== null){
+				return Optional.empty();
+			} else {
+				String emailArray[] = emailString.split(";");
+				return Optional.ofNullable(emailArray);
+			}
 		} else {
 			return Optional.empty();
 		}
