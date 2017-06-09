@@ -18,6 +18,7 @@ public class LikeMeterServlet extends HttpServlet {
 	private static final long serialVersionUID = 3681834966945075969L;
 
 	/**
+	 * Requête GET : Affichage de compteur de Like
      *
      * @param request
      * @param response
@@ -39,6 +40,7 @@ public class LikeMeterServlet extends HttpServlet {
     }
 
     /**
+     * Requête POST : Ajout d'un Like au compteur
      *
      * @param request
      * @param response

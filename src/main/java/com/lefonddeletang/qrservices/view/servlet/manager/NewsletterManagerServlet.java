@@ -11,14 +11,15 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * Servlet permetaant l'accès à la gestion des newsletter
- * la method doPost permet d'ajouter un service newsletter.
+ * Servlet permetant l'accès à la gestion des newsletter
  */
 @WebServlet(name="newsLetterManager", urlPatterns="/newslettermanager")
 public class NewsletterManagerServlet extends HttpServlet {
 	private static final long serialVersionUID = -1813070091028443643L;
 
 	/**
+	 * Requête POST : Création d'un service Newsletter
+	 * 
      * @param request
      * @param response
      * @throws ServletException

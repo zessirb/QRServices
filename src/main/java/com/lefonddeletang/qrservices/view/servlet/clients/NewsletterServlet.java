@@ -17,6 +17,7 @@ public class NewsletterServlet extends HttpServlet {
 	private static final long serialVersionUID = -7089293732496005011L;
 	
 	/**
+	 * Requête GET : Affichage de Newsletter
      *
      * @param request
      * @param response
@@ -28,7 +29,9 @@ public class NewsletterServlet extends HttpServlet {
         request.setAttribute("url", request.getAttribute("url"));
         this.getServletContext().getRequestDispatcher("/WEB-INF/view/" + "newsletter" +".jsp").forward(request, response);
     }
+    
     /**
+     * Requête POST : Abonnement à une Newsletter
      *
      * @param request
      * @param response

@@ -11,14 +11,14 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * Servlet permetaant l'accès à la gestion des likemeter
- * la method doPost permet d'ajouter un service likemeter.
+ * Servlet permetant l'accès à la gestion des likemeter
  */
 @WebServlet(name="LikeMeterManager", urlPatterns="/likemetermanager")
 public class LikeMeterManagerServlet extends HttpServlet {
 	private static final long serialVersionUID = -4141578281870762597L;
 
 	/**
+	 * Requête POST : Création d'un service LikeMeter
      *
      * @param request
      * @param response

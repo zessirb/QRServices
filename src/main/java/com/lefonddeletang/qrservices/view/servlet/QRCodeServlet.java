@@ -28,34 +28,22 @@ public class QRCodeServlet extends HttpServlet {
      */
     @Override
     protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
-
-        final String[] url = request.getRequestURI().split("/");
+final String[] url = request.getRequestURI().split("/");
         final String urlpart = url[url.length-1];
+    	final Optional<ByteArrayOutputStream> qrCodeBytesOpt = BarcodeHandler.generateBarcodeFromUrl(request.getServerName()+":"+request.getServerPort()+"/services/"+urlpart);
+
         if (urlpart == null || urlpart== "") {
             response.sendError(400);
-        }
-
-
-
-        final Optional<ByteArrayOutputStream> qrCodeBytesOpt = BarcodeHandler.generateBarcodeFromUrl(request.getServerName()+":"+request.getServerPort()+"/services/"+urlpart);
-
-        if(qrCodeBytesOpt.isPresent()) {
-
+        } else if (qrCodeBytesOpt.isPresent()) {
             ByteArrayOutputStream qrCodeBytes = qrCodeBytesOpt.get();
-
             response.setContentType("image/png");
             response.setContentLength(qrCodeBytes.size());
-
             OutputStream outStream = response.getOutputStream();
-
             outStream.write(qrCodeBytes.toByteArray());
-
             outStream.flush();
             outStream.close();
-        }
-        else{
+        } else {
             response.sendError(404);
         }
-
     }
 }

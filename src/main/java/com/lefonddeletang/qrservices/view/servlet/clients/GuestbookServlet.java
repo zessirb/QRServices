@@ -19,6 +19,7 @@ public class GuestbookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1845717282725450732L;
 
 	/**
+	 * Requête GET : Affichage d'un livre d'or
      *
      * @param request
      * @param response
@@ -39,6 +40,7 @@ public class GuestbookServlet extends HttpServlet {
     }
 
     /**
+     * Requête POST : Ajout d'un commentaire au livre d'or
      *
      * @param request
      * @param response

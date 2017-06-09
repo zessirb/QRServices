@@ -17,13 +17,6 @@ import java.io.IOException;
 public class GuestbookDetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 9107932537441085538L;
 
-	/**
-     *
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
     @Override
     protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
         int id = (Integer)request.getAttribute("id");

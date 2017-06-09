@@ -11,14 +11,14 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * Servlet permetaant l'accès à la gestion des guestbook
- * la method doPost permet d'ajouter un service guestbook.
+ * Servlet permetant l'accès à la gestion des guestbook (livres d'or)
  */
 @WebServlet(name="GuestbookManager", urlPatterns="/guestbookmanager")
 public class GuestbookManagerServlet extends HttpServlet {
 	private static final long serialVersionUID = -3723149978492225546L;
 
 	/**
+	 * Requête POST : Création d'un service Guestbook
      *
      * @param request
      * @param response

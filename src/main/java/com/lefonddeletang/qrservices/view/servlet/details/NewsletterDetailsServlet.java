@@ -18,13 +18,6 @@ import java.util.Optional;
 public class NewsletterDetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = -6021474831334025206L;
 
-	/**
-     *
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
     @Override
     protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
         final int id = (Integer)request.getAttribute("id");

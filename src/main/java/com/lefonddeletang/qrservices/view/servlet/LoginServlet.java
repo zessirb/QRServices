@@ -13,13 +13,19 @@ import java.util.Optional;
 
 /**
  * Servlet permettetant d'acceder a l'identification des utilisateurs créateur de service.
- * la methode post permet de s'identifier
- * la methode get permet de se deconnecter
  */
 @WebServlet(name="login", urlPatterns="/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 8752510297365804268L;
-	
+
+    /**
+     * Requête Post : Permet de s'identifier
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
 	@Override
     protected void doPost( final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
         final String url = request.getParameter("url");
@@ -33,7 +39,9 @@ public class LoginServlet extends HttpServlet {
         }
         response.sendRedirect(url);
     }
+	
     /**
+     * Requête GET : Permet de se déconnecter
      *
      * @param request
      * @param response
