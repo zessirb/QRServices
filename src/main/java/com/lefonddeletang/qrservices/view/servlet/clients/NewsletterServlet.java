@@ -46,6 +46,9 @@ public class NewsletterServlet extends HttpServlet {
                 request.setAttribute("error",true);
                 this.getServletContext().getRequestDispatcher("/WEB-INF/view/" + "newsletter" +".jsp").forward(request, response);
             }
+            else{
+                this.getServletContext().getRequestDispatcher("/WEB-INF/view/" + "newslettersuscribed" +".jsp").forward(request, response);
+            }
         }
     }
 }
