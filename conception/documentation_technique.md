@@ -39,13 +39,13 @@ L'application web est une application Java EE configurée sous Maven (L'archive 
 
 ### Architecture de l'application
 
-Le projet utilise une architecture en trois couches qui correspondent à la présentation, au traitement et à l'accès des données. Chacune de ces couches est localisée dans un package.
+Le projet utilise une architecture en trois couches qui correspondent à la présentation, au traitement et à l'accès des données. Chacune de ces couches est localisée dans un package, et la majorité des classes est documentée.
 
 L'accès aux données est situé dans le package "com.lefonddeletang.qrservices.model". Il utilise Hibernate pour la persistance en base de données et est séparé en un package de classe utilitaire, un package de JavaBean désignant les modèles des objets, et un package contenant les méthodes de mise à jour CRUD des entrées en base. Pour fonctionner, le model a besoin du fichier de configuration hibernate.cfg.xml.
 
 Le traitement n'est composé que du package "com.lefonddeletang.qrservices.controller" et contient la logique reliant la présentation à l'accès aux données.
 
-La présentation, présente dans le package "com.lefonddeletang.qrservices.view", est composée de servlets dans un package à cet effet ainsi que d'une classe filtrant les URL d'accès aux services. De plus, les pages JSP ainsi que les ressources JS/CSS accessibles epuis le web sont présentes dans le dossier src/main/webapp.
+La présentation, présente dans le package "com.lefonddeletang.qrservices.view", est composée de servlets dans un package à cet effet ainsi que d'une classe filtrant les URL d'accès aux services. De plus, les pages JSP ainsi que les ressources JS/CSS accessibles depuis le web sont présentes dans le dossier src/main/webapp.
 
 ### Contribution au projet
 
