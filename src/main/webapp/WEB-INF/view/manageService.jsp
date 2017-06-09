@@ -10,7 +10,7 @@
 <%@ page isELIgnored="false" %>
 <html>
 <head>
-    <title></title>
+    <title>Manager de service</title>
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/bower_components/semantic/dist/semantic.min.js"></script>
 
