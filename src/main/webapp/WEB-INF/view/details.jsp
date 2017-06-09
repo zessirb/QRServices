@@ -93,7 +93,7 @@
                 <c:when test="${type == 'newsletter'}">
                     <div class="ui list">
                         <c:forEach items="${mails}" var="mail">
-                           <c:if test="${mail ==''}">
+                           <c:if test="${mail !=''}">
                                <div class="item">
                                    <i class="mail icon"></i>
                                    <div class="content">
