@@ -37,7 +37,7 @@ public class QRCodeServlet extends HttpServlet {
 
 
 
-        final Optional<ByteArrayOutputStream> qrCodeBytesOpt = BarcodeHandler.generateBarcodeFromUrl(request.getServerName()+":"+request.getServerPort()+"/services/"+urlpart).get();
+        final Optional<ByteArrayOutputStream> qrCodeBytesOpt = BarcodeHandler.generateBarcodeFromUrl(request.getServerName()+":"+request.getServerPort()+"/services/"+urlpart);
 
         if(qrCodeBytesOpt.isPresent()) {
 
