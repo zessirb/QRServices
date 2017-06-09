@@ -2,12 +2,14 @@ package com.lefonddeletang.qrservices.controller;
 
 import java.util.Optional;
 
-import com.lefonddeletang.qrservices.model.beans.LikeMeterBean;
 import com.lefonddeletang.qrservices.model.beans.NewsletterBean;
 import com.lefonddeletang.qrservices.model.beans.ServiceBean;
 import com.lefonddeletang.qrservices.model.dao.NewsletterDao;
 import com.lefonddeletang.qrservices.model.dao.ServiceDao;
 
+/**
+ * Controller de méthodes statiques gérant les actions réalisées par rapport à une Newsletter
+ */
 public class NewsletterAction {
 	static private NewsletterDao newsletterDao = new NewsletterDao();
 	static private ServiceDao serviceDao = new ServiceDao();

@@ -7,6 +7,9 @@ import com.lefonddeletang.qrservices.model.beans.SurveyBean;
 import com.lefonddeletang.qrservices.model.dao.ServiceDao;
 import com.lefonddeletang.qrservices.model.dao.SurveyDao;
 
+/**
+ * Controller de méthodes statiques gérant les actions réalisées par rapport à un sondage
+ */
 public class SurveyAction {
 	static private SurveyDao surveyDao = new SurveyDao();
 	static private ServiceDao serviceDao = new ServiceDao();

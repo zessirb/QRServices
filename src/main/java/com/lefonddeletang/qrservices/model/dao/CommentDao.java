@@ -10,6 +10,9 @@ import org.hibernate.criterion.Restrictions;
 import com.lefonddeletang.qrservices.model.beans.CommentBean;
 import com.lefonddeletang.qrservices.model.util.HibernateUtil;
 
+/**
+ * Classe requêtant la base de données pour interagir avec les commentaires d'un livre d'or
+ */
 public class CommentDao {
 	
 	/**

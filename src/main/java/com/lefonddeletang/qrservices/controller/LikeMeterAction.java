@@ -7,6 +7,9 @@ import com.lefonddeletang.qrservices.model.beans.ServiceBean;
 import com.lefonddeletang.qrservices.model.dao.LikeMeterDao;
 import com.lefonddeletang.qrservices.model.dao.ServiceDao;
 
+/**
+ * Controller de méthodes statiques gérant les actions réalisées par rapport à un compteur de Like
+ */
 public class LikeMeterAction {
 	static private LikeMeterDao likeMeterDao = new LikeMeterDao();
 	static private ServiceDao serviceDao = new ServiceDao();

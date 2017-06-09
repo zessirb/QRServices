@@ -5,6 +5,9 @@ import java.util.Optional;
 import com.lefonddeletang.qrservices.model.beans.UserBean;
 import com.lefonddeletang.qrservices.model.dao.UserDao;
 
+/**
+ * Controller de méthodes statiques gérant les actions réalisées par rapport aux utilisateurs
+ */
 public class UserAction {
 	static private UserDao userDao = new UserDao();
 	

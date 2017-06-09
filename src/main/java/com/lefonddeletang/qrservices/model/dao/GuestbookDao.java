@@ -9,6 +9,9 @@ import org.hibernate.criterion.Restrictions;
 import com.lefonddeletang.qrservices.model.beans.GuestbookBean;
 import com.lefonddeletang.qrservices.model.util.HibernateUtil;
 
+/**
+ * Classe requêtant la base de données pour interagir avec un livre d'or
+ */
 public class GuestbookDao {
 	
 	/**

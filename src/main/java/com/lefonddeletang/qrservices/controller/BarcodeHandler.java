@@ -6,6 +6,9 @@ import java.util.Optional;
 import net.glxn.qrgen.QRCode;
 import net.glxn.qrgen.image.ImageType;
 
+/**
+ * Classe utilitaire de génération de QR Codes
+ */
 public class BarcodeHandler {
 	/** Constante définissant la résolution (côté) du QRCode **/
 	static private int BARCODESIDESIZE = 250;
