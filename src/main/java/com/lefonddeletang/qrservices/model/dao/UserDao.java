@@ -9,6 +9,9 @@ import org.hibernate.criterion.Restrictions;
 import com.lefonddeletang.qrservices.model.util.HibernateUtil;
 import com.lefonddeletang.qrservices.model.beans.UserBean;
 
+/**
+ * Classe requêtant la base de données pour interagir avec un utilisateur
+ */
 public class UserDao {
 
 	/**

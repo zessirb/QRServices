@@ -9,6 +9,9 @@ import java.util.Random;
 import com.lefonddeletang.qrservices.model.beans.ServiceBean;
 import com.lefonddeletang.qrservices.model.dao.ServiceDao;
 
+/**
+ * Controller de méthodes statiques gérant les actions réalisées par rapport aux services
+ */
 public class ServiceAction {
 	/** Constante définissant la taille des URL générées **/
 	static private int URLSIZE = 5;

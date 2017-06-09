@@ -9,6 +9,9 @@ import org.hibernate.criterion.Restrictions;
 import com.lefonddeletang.qrservices.model.util.HibernateUtil;
 import com.lefonddeletang.qrservices.model.beans.SurveyBean;
 
+/**
+ * Classe requêtant la base de données pour interagir avec un sondage
+ */
 public class SurveyDao {
 	/**
 	 * Requête la base et renvoie un sondage d'après l'id du service

@@ -10,6 +10,9 @@ import org.hibernate.criterion.Restrictions;
 import com.lefonddeletang.qrservices.model.util.HibernateUtil;
 import com.lefonddeletang.qrservices.model.beans.ServiceBean;
 
+/**
+ * Classe requêtant la base de données pour interagir avec un service
+ */
 public class ServiceDao {
 	
 	/**

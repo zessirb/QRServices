@@ -11,6 +11,9 @@ import com.lefonddeletang.qrservices.model.dao.CommentDao;
 import com.lefonddeletang.qrservices.model.dao.GuestbookDao;
 import com.lefonddeletang.qrservices.model.dao.ServiceDao;
 
+/**
+ * Controller de méthodes statiques gérant les actions réalisées par rapport à un livre d'or
+ */
 public class GuestbookAction {
 	static GuestbookDao guestbookDao = new GuestbookDao();
 	static CommentDao commentDao = new CommentDao();
