@@ -2,7 +2,6 @@ package com.lefonddeletang.qrservices.view.servlet;
 
 import com.lefonddeletang.qrservices.controller.UserAction;
 
-import javax.jws.WebMethod;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +18,9 @@ import java.util.Optional;
  */
 @WebServlet(name="login", urlPatterns="/login")
 public class LoginServlet extends HttpServlet {
-    @Override
+	private static final long serialVersionUID = 8752510297365804268L;
+	
+	@Override
     protected void doPost( final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
         final String url = request.getParameter("url");
         final String username= request.getParameter("username");

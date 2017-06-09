@@ -1,6 +1,5 @@
 package com.lefonddeletang.qrservices.view.servlet.manager;
 
-import com.lefonddeletang.qrservices.controller.LikeMeterAction;
 import com.lefonddeletang.qrservices.controller.NewsletterAction;
 
 import javax.servlet.ServletException;
@@ -17,7 +16,9 @@ import java.io.IOException;
  */
 @WebServlet(name="newsLetterManager", urlPatterns="/newslettermanager")
 public class NewsletterManagerServlet extends HttpServlet {
-    /**
+	private static final long serialVersionUID = -1813070091028443643L;
+
+	/**
      * @param request
      * @param response
      * @throws ServletException

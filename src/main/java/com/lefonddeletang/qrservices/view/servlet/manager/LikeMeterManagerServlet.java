@@ -16,7 +16,9 @@ import java.io.IOException;
  */
 @WebServlet(name="LikeMeterManager", urlPatterns="/likemetermanager")
 public class LikeMeterManagerServlet extends HttpServlet {
-    /**
+	private static final long serialVersionUID = -4141578281870762597L;
+
+	/**
      *
      * @param request
      * @param response

@@ -35,7 +35,7 @@ Une fois celui-ci prêt, y déployer l'artefact war (le placer dans le dossier w
 
 ### Stack du projet
 
-L'application web est une application Java EE configurée sous Maven et prévue pour un serveur Tomcat 8. La partie front repose sur les servlet ainsi que JSP ; la couche de persistance utilise Hibernate en tant qu'ORM, et la base est en MySQL.
+L'application web est une application Java EE configurée sous Maven (L'archive WAR a été générée à partir de Maven) et prévue pour un serveur Tomcat 8. La partie front repose sur les servlet ainsi que JSP ; la couche de persistance utilise Hibernate en tant qu'ORM, et la base est en MySQL. 
 
 ### Architecture de l'application
 
@@ -46,6 +46,10 @@ L'accès aux données est situé dans le package "com.lefonddeletang.qrservices.
 Le traitement n'est composé que du package "com.lefonddeletang.qrservices.controller" et contient la logique reliant la présentation à l'accès aux données.
 
 La présentation, présente dans le package "com.lefonddeletang.qrservices.view", est composée de servlets dans un package à cet effet ainsi que d'une classe filtrant les URL d'accès aux services. De plus, les pages JSP ainsi que les ressources JS/CSS accessibles epuis le web sont présentes dans le dossier src/main/webapp.
+
+### Contribution au projet
+
+Le projet est versionné sur Github disponible via le lien suivant : "https://github.com/zessirb/QRServices". N'hésitez pas à nous proposez des Pull Request :)
 
 ### Utilisation du projet
 

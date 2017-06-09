@@ -1,7 +1,6 @@
 package com.lefonddeletang.qrservices.view.servlet.manager;
 
 import com.lefonddeletang.qrservices.controller.GuestbookAction;
-import com.lefonddeletang.qrservices.controller.LikeMeterAction;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +16,9 @@ import java.io.IOException;
  */
 @WebServlet(name="GuestbookManager", urlPatterns="/guestbookmanager")
 public class GuestbookManagerServlet extends HttpServlet {
-    /**
+	private static final long serialVersionUID = -3723149978492225546L;
+
+	/**
      *
      * @param request
      * @param response

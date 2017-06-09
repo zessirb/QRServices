@@ -16,7 +16,9 @@ import java.util.List;
  */
 @WebServlet(name="GuestbookService", urlPatterns="/service/guestbook/*")
 public class GuestbookServlet extends HttpServlet {
-    /**
+	private static final long serialVersionUID = 1845717282725450732L;
+
+	/**
      *
      * @param request
      * @param response

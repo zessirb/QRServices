@@ -14,7 +14,9 @@ import java.io.IOException;
  */
 @WebServlet(name="NewsLetter", urlPatterns="/service/newsletter/*")
 public class NewsletterServlet extends HttpServlet {
-    /**
+	private static final long serialVersionUID = -7089293732496005011L;
+	
+	/**
      *
      * @param request
      * @param response

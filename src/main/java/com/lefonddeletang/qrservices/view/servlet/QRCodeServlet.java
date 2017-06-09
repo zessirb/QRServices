@@ -1,9 +1,7 @@
 package com.lefonddeletang.qrservices.view.servlet;
 
 import com.lefonddeletang.qrservices.controller.BarcodeHandler;
-import net.glxn.qrgen.image.ImageType;
 
-import javax.jws.WebMethod;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +17,9 @@ import java.util.Optional;
  */
 @WebServlet(name="qrcode", urlPatterns="/qrcode/*")
 public class QRCodeServlet extends HttpServlet {
-    /**
+	private static final long serialVersionUID = -4555555204351312719L;
+
+	/**
      *
      * @param request
      * @param response

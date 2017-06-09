@@ -16,7 +16,9 @@ import java.util.Optional;
  */
 @WebServlet(name="NewsletterDetails", urlPatterns = "/detail/newsletter/*")
 public class NewsletterDetailsServlet extends HttpServlet {
-    /**
+	private static final long serialVersionUID = -6021474831334025206L;
+
+	/**
      *
      * @param request
      * @param response

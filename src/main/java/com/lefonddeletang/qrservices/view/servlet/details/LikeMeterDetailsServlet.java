@@ -15,7 +15,9 @@ import java.io.IOException;
  */
 @WebServlet(name="likeMeterDetails", urlPatterns = "/detail/likemeter/*")
 public class LikeMeterDetailsServlet extends HttpServlet {
-    @Override
+	private static final long serialVersionUID = -9106655587046436126L;
+
+	@Override
     protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
         final int id = (Integer)request.getAttribute("id");
         final String[] info = ServiceAction.getServiceTexts(id).get();

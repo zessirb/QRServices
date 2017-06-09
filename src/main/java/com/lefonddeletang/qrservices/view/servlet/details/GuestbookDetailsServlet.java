@@ -15,7 +15,9 @@ import java.io.IOException;
  */
 @WebServlet(name = "GuestbookDetails", urlPatterns = "/detail/guestbook/*")
 public class GuestbookDetailsServlet extends HttpServlet {
-    /**
+	private static final long serialVersionUID = 9107932537441085538L;
+
+	/**
      *
      * @param request
      * @param response
